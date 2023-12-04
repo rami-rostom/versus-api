@@ -100,6 +100,28 @@ const controller = {
     }
   },
 
+  addParticipantToEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { user_id } = req.body;
+
+      const event = await Event.findByPk(id);
+  
+      if (!event) {
+        return res.status(404).json({
+          'error': 'Event not found. Please verify the provided id.'
+        });
+      }
+  
+      await event.addParticipants(user_id);
+  
+      res.json({ message: 'User registered to the event' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   deleteOneEvent: async (req, res) => {
     try {
       const { id } = req.params;
@@ -116,7 +138,7 @@ const controller = {
       console.log(error);
       res.status(500).json(error.toString());
     }
-  },
+  }
 };
 
 module.exports = controller;

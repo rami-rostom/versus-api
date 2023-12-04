@@ -2,7 +2,7 @@
 GET http://localhost:3000/event
 
 ### Render one event
-GET http://localhost:3000/event/2
+GET http://localhost:3000/event/4
 
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1
@@ -16,7 +16,7 @@ content-type: application/json
 }
 
 ### Update an event
-PATCH http://localhost:3000/event/2 HTTP/1.1
+PATCH http://localhost:3000/event/3 HTTP/1.1
 content-type: application/json
 
 {
@@ -25,4 +25,12 @@ content-type: application/json
 }
 
 ### Delete one event
-DELETE  http://localhost:3000/event/2
+DELETE  http://localhost:3000/event/4
+
+### Register to an event
+PATCH http://localhost:3000/event/4/register HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 2
+}
