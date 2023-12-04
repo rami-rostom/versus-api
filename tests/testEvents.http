@@ -1,2 +1,5 @@
 ### Render all events
-GET http://localhost:3000/events
+GET http://localhost:3000/event
+
+### Render one event
+GET http://localhost:3000/event/2
