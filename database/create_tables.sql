@@ -85,9 +85,9 @@ CREATE TABLE "event" (
   "rules" TEXT,
   "contact" TEXT,
   "result" TEXT,
-  "type" INTEGER REFERENCES "type_event"("id") ON DELETE CASCADE,
-  "game" INTEGER REFERENCES "game"("id") ON DELETE CASCADE,
-  "organizer" INTEGER REFERENCES "user"("id") ON DELETE CASCADE,
+  "type_event_id" INTEGER REFERENCES "type_event"("id") ON DELETE CASCADE,
+  "game_id" INTEGER REFERENCES "game"("id") ON DELETE CASCADE,
+  "user_id" INTEGER REFERENCES "user"("id") ON DELETE CASCADE,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );

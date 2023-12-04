@@ -53,9 +53,9 @@ INSERT INTO "event"(
   "rules", 
   "contact", 
   "result", 
-  "type", 
-  "game", 
-  "organizer"
+  "type_event_id", 
+  "game_id", 
+  "user_id"
   ) VALUES
 (1, 'Returnal - Speedrun by VERSUS', '01/01/2024', '01/01/2024', null, 'En ligne', 'draft', 'Compétition de speedrun du jeu Returnal', null, 'ramirez@versus.gg', null, 2, 1, 1);
 
@@ -81,6 +81,7 @@ INSERT INTO "game_has_platform"("id", "game_id", "platform_id") VALUES
 (2, 1, 2);
 
 INSERT INTO "event_has_user"("id", "event_id", "user_id") VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 1, 2);
 
 COMMIT;

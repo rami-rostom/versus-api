@@ -2,7 +2,7 @@
 GET http://localhost:3000/event
 
 ### Render one event
-GET http://localhost:3000/event/2
+GET http://localhost:3000/event/1
 
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1

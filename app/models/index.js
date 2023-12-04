@@ -32,7 +32,7 @@ Social.belongsTo(User, {
 
 // Un event a un type d'event
 TypeEvent.hasMany(Event, {
-  as: 'events',
+  as: 'event_type',
   foreignKey: 'type_event_id'
 });
 Event.belongsTo(TypeEvent, {
@@ -42,7 +42,7 @@ Event.belongsTo(TypeEvent, {
 
 // Un event est lié à un jeu
 Game.hasMany(Event, {
-  as: 'events',
+  as: 'event_game',
   foreignKey: 'game_id'
 });
 Event.belongsTo(Game, {
@@ -52,7 +52,7 @@ Event.belongsTo(Game, {
 
 // Un event a un organisateur
 User.hasMany(Event, {
-  as: 'events',
+  as: 'event_user',
   foreignKey: 'user_id'
 });
 Event.belongsTo(User, {
@@ -65,7 +65,7 @@ Event.belongsTo(User, {
 
 // Un utilisateur peut avoir plusieurs équipes et une équipe peut avoir plusieurs utilisateurs
 User.belongsToMany(Team, {
-  as: 'teams',
+  as: 'crews',
   through: 'user_has_team',
   foreignKey: 'user_id',
   otherKey: 'team_id',
@@ -97,7 +97,7 @@ Team.belongsToMany(User, {
 
 // Un utilisateur peut suivre plusieurs autres utilisateurs et un utilisateur peut être suivi par plusieurs utilisateurs
 User.belongsToMany(User, {
-  as: 'users',
+  as: 'players',
   through: 'user_like_user',
   foreignKey: 'user_id',
   otherKey: 'user_id',
@@ -135,7 +135,7 @@ User.belongsToMany(Game, {
   otherKey: 'game_id',
   updatedAt: false
 });
-Platform.belongsToMany(Game, {
+Game.belongsToMany(User, {
   as: 'users',
   through: 'user_like_game',
   foreignKey: 'game_id',

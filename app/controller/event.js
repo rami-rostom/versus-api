@@ -1,9 +1,11 @@
-const { eventDataMapper } = require('../dataMapper');
+const { Event } = require('../models/index');
 
 const controller = {
   getAllEvent: async (_, res) => {
     try {
-      const events = await eventDataMapper.getAll();
+      const events = await Event.findAll({
+        include: ['game', 'organizer', 'type_event']
+      });
 
       res.status(200).json(events);
     } catch (error) {
@@ -15,7 +17,9 @@ const controller = {
   getOneEvent: async (req, res) => {
     try {
       const { id } = req.params;
-      const event = await eventDataMapper.getOne(id);
+      const event = await Event.findByPk(id, {
+        include: ['game', 'organizer', 'type_event', 'participants']
+      });
 
       if (event) {
         res.status(200).json(event);
@@ -24,8 +28,6 @@ const controller = {
           'error': 'Event not found. Please verify the provided id.'
         });
       }
-
-      res.status(200).json(event);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -42,7 +44,7 @@ const controller = {
         });
       }
 
-      const newEvent = await eventDataMapper.create(title, start_date, end_date, status);
+      const newEvent = await Event.create({ title, start_date, end_date, status });
       res.status(201).json(newEvent);
     } catch (error) {
       console.log(error);
