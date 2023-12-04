@@ -4,7 +4,7 @@ INSERT INTO "role"("id", "name") VALUES
 (1, 'admin'),
 (2, 'member');
 
-INSERT INTO "user"("id", "pseudo", "email", "password", "avatar", "role_id") VALUES
+INSERT INTO "user"("id", "username", "email", "password", "avatar", "role_id") VALUES
 (1, 'ramirez', 'rami@versus.gg', 'ramirez', null, 2),
 (2, 'sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'sasha', null, 2);
 
