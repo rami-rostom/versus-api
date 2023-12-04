@@ -11,6 +11,7 @@ const controller = {
       res.status(500).json(error.toString());
     }
   },
+
   getOneEvent: async (req, res) => {
     try {
       const { id } = req.params;
@@ -25,6 +26,24 @@ const controller = {
       }
 
       res.status(200).json(event);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  createOneEvent: async (req, res) => {
+    try {
+      const { title, start_date, end_date, status } = req.body;
+
+      if (!title || !start_date || !end_date || !status) {
+        return res.status(400).json({
+          'error': 'Missing body parameter'
+        });
+      }
+
+      const newEvent = await eventDataMapper.create(title, start_date, end_date, status);
+      res.status(201).json(newEvent);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
