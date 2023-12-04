@@ -1,0 +1,2 @@
+### Render all events
+GET http://localhost:3000/events
