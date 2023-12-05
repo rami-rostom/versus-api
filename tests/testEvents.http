@@ -1,5 +1,5 @@
 ### Render all events
-GET http://localhost:3000/event
+GET http://localhost:3000/events
 
 ### Render one event
 GET http://localhost:3000/event/4
@@ -16,11 +16,11 @@ content-type: application/json
 }
 
 ### Update an event
-PATCH http://localhost:3000/event/3 HTTP/1.1
+PATCH http://localhost:3000/event/4 HTTP/1.1
 content-type: application/json
 
 {
-    "location": "Chez moi",
+    "location": "Chez oim",
     "type_event_id": 1
 }
 

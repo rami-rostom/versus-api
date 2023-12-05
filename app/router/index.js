@@ -2,9 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const { eventController } = require('../controller');
+const { homeController } = require('../controller');
+
+// HOME
+router.get('/', homeController.renderHomePage);
 
 // EVENT
-router.get('/event', eventController.getAllEvent);
+router.get('/events', eventController.getAllEvent);
 router.get('/event/:id', eventController.getOneEvent);
 router.post('/event', eventController.createOneEvent);
 router.patch('/event/:id', eventController.updateOneEvent);
