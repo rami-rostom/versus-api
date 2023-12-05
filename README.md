@@ -5,9 +5,10 @@
 - **(GET)** Récupérer tous les événements : `/events`
 - **(GET)** Récupérer un événement : `/event/1`
 - **(POST)** Créer un événement : `/event`
+- **(DELETE)** Supprimer un événement : `/event/1`
 - **(PATCH)** Modifier un événement : `/event/1`
 - **(PATCH)** S'inscrire à un événement : `/event/1/register`
-- **(DELETE)** Supprimer un événement : `/event/1`
+- **(PATCH)** Se désinscrire d'un événement : `/event/1/unregister`
 
 ## Création de la base de données en local
 
