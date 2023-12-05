@@ -29,6 +29,30 @@ const controller = {
       console.log(error);
       res.status(500).json(error.toString());
     }
+  },
+
+  updateOneUser: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findByPk(id);
+
+      if (!user) {
+        return res.status(404).json({
+          'error': 'User not found. Please verify the provided id.'
+        });
+      }
+
+      const { username, avatar } = req.body;
+
+      if (username) { user.username = username; }
+      if (avatar) { user.avatar = avatar; }
+
+      await user.save();
+      res.json(user);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
   }
 };
 
