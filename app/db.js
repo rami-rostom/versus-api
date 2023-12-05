@@ -1,6 +1,10 @@
-const { Client } = require('pg');
+const { Sequelize } = require('sequelize');
 
-const client = new Client(process.env.PG_URL);
-client.connect();
+const sequelize = new Sequelize(process.env.PG_URL, {
+  dialect: 'postgres',
+  define: {
+    underscored: true
+  }
+});
 
-module.exports = client;
+module.exports = sequelize;

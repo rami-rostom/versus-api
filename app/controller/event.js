@@ -1,9 +1,11 @@
-const { eventDataMapper } = require('../dataMapper');
+const { Event } = require('../models/index');
 
 const controller = {
   getAllEvent: async (_, res) => {
     try {
-      const events = await eventDataMapper.getAll();
+      const events = await Event.findAll({
+        include: ['game', 'organizer', 'type_event']
+      });
 
       res.status(200).json(events);
     } catch (error) {
@@ -15,7 +17,9 @@ const controller = {
   getOneEvent: async (req, res) => {
     try {
       const { id } = req.params;
-      const event = await eventDataMapper.getOne(id);
+      const event = await Event.findByPk(id, {
+        include: ['game', 'organizer', 'type_event', 'participants']
+      });
 
       if (event) {
         res.status(200).json(event);
@@ -24,8 +28,6 @@ const controller = {
           'error': 'Event not found. Please verify the provided id.'
         });
       }
-
-      res.status(200).json(event);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -42,8 +44,96 @@ const controller = {
         });
       }
 
-      const newEvent = await eventDataMapper.create(title, start_date, end_date, status);
+      const newEvent = await Event.create({ title, start_date, end_date, status });
       res.status(201).json(newEvent);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  updateOneEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const event = await Event.findByPk(id);
+      if (!event) {
+        return res.status(404).json({
+          'error': 'Event not found. Please verify the provided id.'
+        });
+      }
+
+      const {
+        title,
+        start_date,
+        end_date,
+        banner,
+        location,
+        status,
+        description,
+        rules,
+        contact,
+        result,
+        type_event_id,
+        game_id,
+        user_id
+      } = req.body;
+
+      if (title) { event.title = title; }
+      if (start_date) { event.start_date = start_date; }
+      if (end_date) { event.end_date = end_date; }
+      if (banner) { event.banner = banner; }
+      if (location) { event.location = location; }
+      if (status) { event.status = status; }
+      if (description) { event.description = description; }
+      if (rules) { event.rules = rules; }
+      if (contact) { event.contact = contact; }
+      if (result) { event.result = result; }
+      if (type_event_id) { event.type_event_id = type_event_id; }
+      if (game_id) { event.game_id = game_id; }
+      if (user_id) { event.user_id = user_id; }
+
+      await event.save();
+      res.json(event);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  addParticipantToEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { user_id } = req.body;
+
+      const event = await Event.findByPk(id);
+  
+      if (!event) {
+        return res.status(404).json({
+          'error': 'Event not found. Please verify the provided id.'
+        });
+      }
+  
+      await event.addParticipants(user_id);
+  
+      res.json({ message: 'User registered to the event' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  deleteOneEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const event = await Event.findByPk(id);
+      if (!event) {
+        return res.status(404).json({
+          'error': 'Event not found. Please verify the provided id.'
+        });
+      }
+
+      await event.destroy();
+      res.json('Event deleted');
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
