@@ -56,6 +56,7 @@ const controller = {
     try {
       const { id } = req.params;
       const event = await Event.findByPk(id);
+
       if (!event) {
         return res.status(404).json({
           'error': 'Event not found. Please verify the provided id.'
@@ -122,10 +123,33 @@ const controller = {
     }
   },
 
+  removeParticipantFromEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { user_id } = req.body;
+
+      const event = await Event.findByPk(id);
+  
+      if (!event) {
+        return res.status(404).json({
+          'error': 'Event not found. Please verify the provided id.'
+        });
+      }
+
+      await event.removeParticipants(user_id);
+  
+      res.json({ message: 'User unregistered from the event' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   deleteOneEvent: async (req, res) => {
     try {
       const { id } = req.params;
       const event = await Event.findByPk(id);
+
       if (!event) {
         return res.status(404).json({
           'error': 'Event not found. Please verify the provided id.'

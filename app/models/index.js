@@ -52,7 +52,7 @@ Event.belongsTo(Game, {
 
 // Un event a un organisateur
 User.hasMany(Event, {
-  as: 'event_user',
+  as: 'organize',
   foreignKey: 'user_id'
 });
 Event.belongsTo(User, {
@@ -65,7 +65,7 @@ Event.belongsTo(User, {
 
 // Un utilisateur peut avoir plusieurs équipes et une équipe peut avoir plusieurs utilisateurs
 User.belongsToMany(Team, {
-  as: 'crews',
+  as: 'teams',
   through: 'user_has_team',
   foreignKey: 'user_id',
   otherKey: 'team_id',
@@ -81,7 +81,7 @@ Team.belongsToMany(User, {
 
 // Un utilisateur peut suivre plusieurs équipes et une équipe peut être suivi par plusieurs utilisateurs
 User.belongsToMany(Team, {
-  as: 'teams',
+  as: 'like_teams',
   through: 'user_like_team',
   foreignKey: 'user_id',
   otherKey: 'team_id',
@@ -97,7 +97,7 @@ Team.belongsToMany(User, {
 
 // Un utilisateur peut suivre plusieurs autres utilisateurs et un utilisateur peut être suivi par plusieurs utilisateurs
 User.belongsToMany(User, {
-  as: 'players',
+  as: 'like_users',
   through: 'user_like_user',
   foreignKey: 'user_id',
   otherKey: 'user_id',

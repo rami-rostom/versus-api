@@ -1,8 +1,18 @@
 # VERSUS - Back
 
-Pour installer la base de données de VERSUS en local, il suffit de suivre ces quelques étapes.
+## Endpoints de l'API
+
+- **(GET)** Récupérer tous les événements : `/events`
+- **(GET)** Récupérer un événement : `/event/1`
+- **(POST)** Créer un événement : `/event`
+- **(DELETE)** Supprimer un événement : `/event/1`
+- **(PATCH)** Modifier un événement : `/event/1`
+- **(PATCH)** S'inscrire à un événement : `/event/1/register`
+- **(PATCH)** Se désinscrire d'un événement : `/event/1/unregister`
 
 ## Création de la base de données en local
+
+Pour installer la base de données de VERSUS en local, il suffit de suivre ces quelques étapes.
 
 - Lancer le serveur Postgres en local : `sudo -i -u postgres psql`
 - Créer l'utilisateur "versus" : `CREATE ROLE versus WITH LOGIN PASSWORD 'versus';`
