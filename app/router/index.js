@@ -20,5 +20,6 @@ router.delete('/event/:id', eventController.deleteOneEvent);
 // USER
 router.get('/user/:id', userController.getOneUser);
 router.patch('/user/:id', userController.updateOneUser);
+router.get('/user/:id/events', userController.getUserEvents);
 
 module.exports = router;

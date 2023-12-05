@@ -8,3 +8,6 @@ content-type: application/json
 {
     "username": "rami"
 }
+
+### Get events of an user
+GET http://localhost:3000/user/1/events
