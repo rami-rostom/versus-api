@@ -73,6 +73,26 @@ const controller = {
       console.log(error);
       res.status(500).json(error.toString());
     }
+  },
+
+  getUserTeams: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findByPk(id);
+
+      if (!user) {
+        return res.status(404).json({
+          'error': 'User not found. Please verify the provided id.'
+        });
+      }
+
+      const userTeams = await user.getTeams();
+
+      res.status(200).json(userTeams);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
   }
 };
 

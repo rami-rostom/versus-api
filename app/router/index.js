@@ -21,5 +21,6 @@ router.delete('/event/:id', eventController.deleteOneEvent);
 router.get('/user/:id', userController.getOneUser);
 router.patch('/user/:id', userController.updateOneUser);
 router.get('/user/:id/events', userController.getUserEvents);
+router.get('/user/:id/teams', userController.getUserTeams);
 
 module.exports = router;
