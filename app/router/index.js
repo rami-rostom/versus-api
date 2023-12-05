@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { eventController } = require('../controller');
 const { homeController } = require('../controller');
+const { eventController } = require('../controller');
+const { userController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -15,5 +16,8 @@ router.patch('/event/:id', eventController.updateOneEvent);
 router.patch('/event/:id/register', eventController.addParticipantToEvent);
 router.patch('/event/:id/unregister', eventController.removeParticipantFromEvent);
 router.delete('/event/:id', eventController.deleteOneEvent);
+
+// USER
+router.get('/user/:id', userController.getOneUser);
 
 module.exports = router;

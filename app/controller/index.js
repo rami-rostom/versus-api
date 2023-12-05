@@ -1,4 +1,5 @@
-const eventController = require('./event');
 const homeController = require('./home');
+const eventController = require('./event');
+const userController = require('./user');
 
-module.exports = { eventController, homeController };
+module.exports = { homeController, eventController, userController };
