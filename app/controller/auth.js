@@ -64,6 +64,46 @@ const controller = {
       console.log(error);
       res.status(500).json(error.toString());
     }
+  },
+
+  handleSignIn: async (req, res) => {
+    try {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return res.status(400).json({
+          'error': 'Missing parameter(s).'
+        });
+      }
+
+      const userFound = await User.findOne({
+        where: { email }
+      });
+
+      if (!userFound) {
+        return res.status(400).json({
+          'error': 'This user doesn\'t exist.'
+        });
+      }
+
+      const verificationBcrypt = (errBycrypt, resBycrypt) => {
+        if (resBycrypt) {
+          return res.status(200).json({
+            'userId': userFound.id,
+            'token': jwt.generateTokenForUser(userFound)
+          });
+        } else {
+          return res.status(400).json({
+            'error': 'Please verify provided parameters.'
+          });
+        }
+      };
+
+      bcrypt.compare(password, userFound.password, verificationBcrypt);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
   }
 };
 

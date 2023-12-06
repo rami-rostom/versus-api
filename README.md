@@ -63,22 +63,22 @@ Create a new user
 
 ```bash
   CREATE ROLE versus WITH LOGIN PASSWORD 'versus';
-  (\du - to get all the users)
 ```
+  (\du - to get all the users)
 
 Create the database
 
 ```bash
   CREATE DATABASE versus WITH OWNER versus;
-  (\du - to get all the databases)
 ```
+  (\du - to get all the databases)
 
 Connect to the database
 
 ```bash
-  \c versus versus
-  (\conninfo - to check the db)
+  \c versus versus;
 ```
+  (\conninfo - to check the db)
 
 <br />
 

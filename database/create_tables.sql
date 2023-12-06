@@ -62,6 +62,7 @@ CREATE TABLE "platform" (
 CREATE TABLE "game" (
   "id" SERIAL PRIMARY KEY,
   "name" TEXT,
+  "thumbnail" TEXT,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ
 );
@@ -76,15 +77,16 @@ CREATE TABLE "type_event" (
 CREATE TABLE "event" (
   "id" SERIAL PRIMARY KEY,
   "title" TEXT NOT NULL,
+  "title_slug" TEXT,
   "start_date" DATE NOT NULL,
   "end_date" DATE NOT NULL,
   "banner" TEXT,
+  "thumbnail" TEXT,
   "location" TEXT,
-  "status" TEXT NOT NULL,
+  "status" TEXT DEFAULT 'draft' NOT NULL,
   "description" TEXT,
   "rules" TEXT,
   "contact" TEXT,
-  "result" TEXT,
   "type_event_id" INTEGER REFERENCES "type_event"("id") ON DELETE CASCADE,
   "game_id" INTEGER REFERENCES "game"("id") ON DELETE CASCADE,
   "user_id" INTEGER REFERENCES "user"("id") ON DELETE CASCADE,
