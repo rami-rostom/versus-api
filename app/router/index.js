@@ -4,6 +4,7 @@ const router = express.Router();
 const { homeController } = require('../controller');
 const { eventController } = require('../controller');
 const { userController } = require('../controller');
+const { preferencesController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -22,5 +23,9 @@ router.get('/user/:id', userController.getOneUser);
 router.patch('/user/:id', userController.updateOneUser);
 router.get('/user/:id/events', userController.getUserEvents);
 router.get('/user/:id/teams', userController.getUserTeams);
+
+// PREFERENCES
+router.patch('/user/:id/preferences/platforms', preferencesController.updateUserPreferedPlatform);
+router.patch('/user/:id/preferences/games', preferencesController.updateUserPreferedGame);
 
 module.exports = router;
