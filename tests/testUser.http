@@ -14,3 +14,11 @@ GET http://localhost:3000/user/1/events
 
 ### Get teams of an user
 GET http://localhost:3000/user/1/teams
+
+### Update platform preferences of an user
+PATCH http://localhost:3000/user/1/preferences/platforms HTTP/1.1
+content-type: application/json
+
+{
+    "platform_id": 4
+}
