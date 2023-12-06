@@ -5,6 +5,7 @@ const { homeController } = require('../controller');
 const { eventController } = require('../controller');
 const { userController } = require('../controller');
 const { preferencesController } = require('../controller');
+const { authController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -27,5 +28,8 @@ router.get('/user/:id/teams', userController.getUserTeams);
 // PREFERENCES
 router.patch('/user/:id/preferences/platforms', preferencesController.updateUserPreferedPlatform);
 router.patch('/user/:id/preferences/games', preferencesController.updateUserPreferedGame);
+
+// AUTHENTIFICATION
+router.post('/signup', authController.handleSignUp);
 
 module.exports = router;
