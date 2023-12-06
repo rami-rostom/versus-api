@@ -1,5 +1,5 @@
 ### Render one user
-GET http://localhost:3000/user/1
+GET http://localhost:3000/user/3
 
 ### Update one user
 PATCH http://localhost:3000/user/1 HTTP/1.1

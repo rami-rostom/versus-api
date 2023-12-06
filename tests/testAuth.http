@@ -1,0 +1,9 @@
+### Signup
+POST http://localhost:3000/signup HTTP/1.1
+content-type: application/json
+
+{
+  "email": "will@versus.gg",
+  "password": "William1",
+  "confirmation": "William1"
+}
