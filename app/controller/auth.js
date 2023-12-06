@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 const { User } = require('../models/index');
 
 const controller = {
@@ -47,9 +48,11 @@ const controller = {
 
       const passwordHashed = await bcrypt.hash(password, 10);
 
+      const uniqueId = uuidv4();
+
       await User.create({
         email,
-        username: 'william',
+        username: uniqueId,
         password: passwordHashed,
         confirmation: passwordHashed
       });
