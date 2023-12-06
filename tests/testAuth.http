@@ -7,3 +7,12 @@ content-type: application/json
   "password": "Ramirez1",
   "confirmation": "Ramirez1"
 }
+
+### Signin
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "rami@gmail.com",
+  "password": "Ramirez1"
+}

@@ -26,13 +26,17 @@ INSERT INTO "platform"("id", "name") VALUES
 (7, 'Mobile'),
 (8, 'Rétro');
 
-INSERT INTO "game"("id", "name") VALUES
-(1, 'Returnal'),
-(2, 'Hadès'),
-(3, 'League of Legends'),
-(4, 'Super Mario Smash Bros Ultimate'),
-(5, 'PUBG: Battlegrounds'),
-(6, 'Valorant');
+INSERT INTO "game"("id", "name", "thumbnail") VALUES
+(1, 'Trackmania', 'https://static-cdn.jtvnw.net/ttv-boxart/687129551_IGDB-285x380.jpg'),
+(2, 'GTA V', 'https://static-cdn.jtvnw.net/ttv-boxart/32982_IGDB-285x380.jpg'),
+(3, 'Call of Duty', 'https://static-cdn.jtvnw.net/ttv-boxart/1337444628_IGDB-285x380.jpg'),
+(4, 'Super Mario Smash Bros Ultimate', 'https://static-cdn.jtvnw.net/ttv-boxart/504461_IGDB-285x380.jpg'),
+(5, 'PUBG: Battlegrounds', 'https://static-cdn.jtvnw.net/ttv-boxart/493057-285x380.jpg'),
+(6, 'Valorant', 'https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg'),
+(7, 'League of Legends', 'https://static-cdn.jtvnw.net/ttv-boxart/21779-285x380.jpg'),
+(8, 'Minecraft', 'https://www.minecraft.net/content/dam/games/minecraft/key-art/Games_Subnav_Minecraft-300x465.jpg'),
+(9, 'Star Citizen', 'https://static-cdn.jtvnw.net/ttv-boxart/71375_IGDB-285x380.jpg'),
+(10, 'Fortnite', 'https://static-cdn.jtvnw.net/ttv-boxart/33214-285x380.jpg');
 
 INSERT INTO "type_event"("id", "name") VALUES
 (1, 'Tournoi'),
@@ -43,21 +47,22 @@ INSERT INTO "type_event"("id", "name") VALUES
 
 INSERT INTO "event"(
   "id", 
-  "title", 
+  "title",
+  "title_slug", 
   "start_date", 
   "end_date", 
-  "banner", 
+  "banner",
+  "thumbnail", 
   "location", 
   "status", 
   "description", 
   "rules", 
   "contact", 
-  "result", 
   "type_event_id", 
   "game_id", 
   "user_id"
   ) VALUES
-(1, 'Returnal - Speedrun by VERSUS', '01/01/2024', '01/01/2024', null, 'En ligne', 'draft', 'Compétition de speedrun du jeu Returnal', null, 'ramirez@versus.gg', null, 2, 1, 1);
+(1, 'Returnal - Speedrun by VERSUS', null, '01/01/2024', '01/01/2024', null, null, 'En ligne', 'draft', 'Compétition de speedrun du jeu Returnal', null, 'ramirez@versus.gg', 2, 1, 1);
 
 INSERT INTO "user_has_team"("id", "user_id", "team_id") VALUES
 (1, 1, 1);

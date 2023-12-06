@@ -31,5 +31,6 @@ router.patch('/user/:id/preferences/games', preferencesController.updateUserPref
 
 // AUTHENTIFICATION
 router.post('/signup', authController.handleSignUp);
+router.post('/login', authController.handleSignIn);
 
 module.exports = router;
