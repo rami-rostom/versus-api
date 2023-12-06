@@ -6,7 +6,8 @@ INSERT INTO "role"("id", "name") VALUES
 
 INSERT INTO "user"("id", "username", "email", "password", "avatar", "role_id") VALUES
 (1, 'ramirez', 'rami@versus.gg', 'ramirez', null, 2),
-(2, 'sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'sasha', null, 2);
+(2, 'sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'sasha', null, 2),
+(3, 'admin', 'admin@versus.gg', 'admin', null, 1);
 
 INSERT INTO "social"("id", "name", "link", "user_id") VALUES
 (1, 'Discord', 'http://discordapp.com/users/1090616418468380723', 1),
