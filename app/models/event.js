@@ -8,6 +8,10 @@ Event.init({
     type: DataTypes.TEXT,
     allowNull: false
   },
+  title_slug: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
   start_date: {
     type: DataTypes.DATE,
     allowNull: false
@@ -17,6 +21,10 @@ Event.init({
     allowNull: false
   },
   banner: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  thumbnail: {
     type: DataTypes.TEXT,
     allowNull: true
   },
@@ -37,10 +45,6 @@ Event.init({
     allowNull: true
   },
   contact: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  result: {
     type: DataTypes.TEXT,
     allowNull: true
   },
