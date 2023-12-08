@@ -14,5 +14,6 @@ content-type: application/json
 
 {
   "email": "rami@gmail.com",
-  "password": "Ramirez1"
+  "password": "Ramirez1!",
+  "is_connected": true
 }

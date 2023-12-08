@@ -92,7 +92,8 @@ const controller = {
         if (resBycrypt) {
           return res.status(200).json({
             'userId': userFound.id,
-            'token': jwt.generateTokenForUser(userFound)
+            'token': jwt.generateTokenForUser(userFound),
+            'isConnected': true
           });
         } else {
           return res.status(400).json({
