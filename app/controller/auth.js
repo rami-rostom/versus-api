@@ -8,7 +8,7 @@ const controller = {
     const EMAIL_REGEX = /^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/gm;
 
     // Password require at least 8 characters, 1 capital letter and 1 number.
-    const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+    const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm;
 
     try {
       const { email, password, confirmation } = req.body;
@@ -18,6 +18,12 @@ const controller = {
           'error': 'Missing parameter(s).'
         });
       }      
+      
+      if (password !== confirmation) {
+        return res.status(400).json({
+          'error': 'Password and confirmation isn\'t matching.'
+        });
+      }
 
       if (!EMAIL_REGEX.test(email)) {
         return res.status(400).json({
@@ -27,13 +33,7 @@ const controller = {
 
       if (!PASSWORD_REGEX.test(password)) {
         return res.status(400).json({
-          'error': 'Password invalid (must be at least 8 characters, include 1 number and 1 capital letter).'
-        });
-      }
-
-      if (password !== confirmation) {
-        return res.status(400).json({
-          'error': 'Password and confirmation isn\'t matching.'
+          'error': 'Password invalid (must be at least 8 characters, include one number, one capital letter and one special character).'
         });
       }
 
@@ -55,7 +55,8 @@ const controller = {
         email,
         username: uniqueId,
         password: passwordHashed,
-        confirmation: passwordHashed
+        confirmation: passwordHashed,
+        role_id: 2
       });
 
       res.status(200).json({

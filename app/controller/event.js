@@ -36,15 +36,15 @@ const controller = {
 
   createOneEvent: async (req, res) => {
     try {
-      const { title, start_date, end_date, status } = req.body;
+      const { title, start_date, end_date, status, user_id } = req.body;
 
-      if (!title || !start_date || !end_date || !status) {
+      if (!title || !start_date || !end_date || !status || !user_id) {
         return res.status(400).json({
-          'error': 'Missing body parameter'
+          'error': 'Missing body parameter(s)'
         });
       }
 
-      const newEvent = await Event.create({ title, start_date, end_date, status });
+      const newEvent = await Event.create({ title, start_date, end_date, status, user_id });
       res.status(201).json(newEvent);
     } catch (error) {
       console.log(error);
