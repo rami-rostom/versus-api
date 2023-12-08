@@ -1,3 +1,4 @@
+const slugify = require('slugify');
 const { Event } = require('../models/index');
 
 const controller = {
@@ -44,7 +45,16 @@ const controller = {
         });
       }
 
-      const newEvent = await Event.create({ title, start_date, end_date, status, user_id });
+      const titleSlugified = slugify(title, { lower: true });
+
+      const newEvent = await Event.create({
+        title,
+        title_slug: titleSlugified,
+        start_date,
+        end_date,
+        status,
+        user_id
+      });
       res.status(201).json(newEvent);
     } catch (error) {
       console.log(error);
