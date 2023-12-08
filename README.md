@@ -48,6 +48,7 @@ Application Programming Interface built using [Express](https://expressjs.com/fr
 ### Authentification
 
 - **(POST)** Create a new user : `/signup`
+- **(POST)** Sign-in : `/login`
 
 <br />
 

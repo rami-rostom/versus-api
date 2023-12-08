@@ -12,12 +12,12 @@ router.get('/', homeController.renderHomePage);
 
 // EVENT
 router.get('/events', eventController.getAllEvent);
-router.get('/event/:id', eventController.getOneEvent);
 router.post('/event', eventController.createOneEvent);
+router.get('/event/:id', eventController.getOneEvent);
 router.patch('/event/:id', eventController.updateOneEvent);
+router.delete('/event/:id', eventController.deleteOneEvent);
 router.patch('/event/:id/register', eventController.addParticipantToEvent);
 router.patch('/event/:id/unregister', eventController.removeParticipantFromEvent);
-router.delete('/event/:id', eventController.deleteOneEvent);
 
 // USER
 router.get('/user/:id', userController.getOneUser);

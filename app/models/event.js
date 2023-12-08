@@ -34,6 +34,7 @@ Event.init({
   },
   status: {
     type: DataTypes.TEXT,
+    defaultValue: 'draft',
     allowNull: false
   },
   description: {

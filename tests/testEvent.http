@@ -2,16 +2,16 @@
 GET http://localhost:3000/events
 
 ### Render one event
-GET http://localhost:3000/event/1
+GET http://localhost:3000/event/4
 
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Tournoi Mario Kart",
-    "start_date": "2023-12-12",
-    "end_date": "2023-12-13",
+    "title": "Smash Bros by VERSUS",
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-01",
     "status": "draft"
 }
 
@@ -20,12 +20,15 @@ PATCH http://localhost:3000/event/4 HTTP/1.1
 content-type: application/json
 
 {
-    "location": "Chez oim",
+    "location": "En ligne",
+    "description": "Tournoi VERSUS Smash Bros",
+    "contact": "ramirez@versus.gg",
+    "game_id": 4,
     "type_event_id": 1
 }
 
 ### Delete one event
-DELETE  http://localhost:3000/event/4
+DELETE  http://localhost:3000/event/5
 
 ### Register to an event
 PATCH http://localhost:3000/event/4/register HTTP/1.1
