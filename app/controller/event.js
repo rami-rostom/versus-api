@@ -37,9 +37,9 @@ const controller = {
 
   createOneEvent: async (req, res) => {
     try {
-      const { title, start_date, end_date, status, user_id } = req.body;
+      const { title, start_date, end_date, user_id } = req.body;
 
-      if (!title || !start_date || !end_date || !status || !user_id) {
+      if (!title || !start_date || !end_date || !user_id) {
         return res.status(400).json({
           'error': 'Missing body parameter(s)'
         });
@@ -52,7 +52,7 @@ const controller = {
         title_slug: titleSlugified,
         start_date,
         end_date,
-        status,
+        status: 'draft',
         user_id
       });
       res.status(201).json(newEvent);
