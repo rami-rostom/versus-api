@@ -12,7 +12,7 @@ content-type: application/json
     "title": "Smash Bros by VERSUS",
     "start_date": "2024-01-01",
     "end_date": "2024-01-01",
-    "status": "draft"
+    "user_id": 1
 }
 
 ### Update an event
@@ -28,7 +28,7 @@ content-type: application/json
 }
 
 ### Delete one event
-DELETE  http://localhost:3000/event/5
+DELETE  http://localhost:3000/event/2
 
 ### Register to an event
 PATCH http://localhost:3000/event/4/register HTTP/1.1

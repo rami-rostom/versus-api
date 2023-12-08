@@ -1,3 +1,4 @@
+const slugify = require('slugify');
 const { Event } = require('../models/index');
 
 const controller = {
@@ -36,15 +37,24 @@ const controller = {
 
   createOneEvent: async (req, res) => {
     try {
-      const { title, start_date, end_date, status } = req.body;
+      const { title, start_date, end_date, user_id } = req.body;
 
-      if (!title || !start_date || !end_date || !status) {
+      if (!title || !start_date || !end_date || !user_id) {
         return res.status(400).json({
-          'error': 'Missing body parameter'
+          'error': 'Missing body parameter(s)'
         });
       }
 
-      const newEvent = await Event.create({ title, start_date, end_date, status });
+      const titleSlugified = slugify(title, { lower: true });
+
+      const newEvent = await Event.create({
+        title,
+        title_slug: titleSlugified,
+        start_date,
+        end_date,
+        status: 'draft',
+        user_id
+      });
       res.status(201).json(newEvent);
     } catch (error) {
       console.log(error);
