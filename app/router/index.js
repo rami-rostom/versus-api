@@ -6,6 +6,7 @@ const { eventController } = require('../controller');
 const { userController } = require('../controller');
 const { preferencesController } = require('../controller');
 const { authController } = require('../controller');
+const { teamController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -29,6 +30,13 @@ router.get('/user/:id/teams', userController.getUserTeams);
 // PREFERENCES
 router.patch('/user/:id/preferences/platforms', preferencesController.updateUserPreferedPlatform);
 router.patch('/user/:id/preferences/games', preferencesController.updateUserPreferedGame);
+
+// TEAM
+router.get('/teams', teamController.getAllTeams);
+router.post('/team', teamController.createOneTeam);
+router.get('/team/:id', teamController.getOneTeam);
+router.delete('/team/:id', teamController.deleteOneTeam);
+router.patch('/team/:id/user', teamController.updateTeamPlayers);
 
 // AUTHENTIFICATION
 router.post('/signup', authController.handleSignUp);
