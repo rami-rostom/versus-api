@@ -13,7 +13,7 @@ router.get('/', homeController.renderHomePage);
 // EVENT
 router.get('/events', eventController.getAllEvent);
 router.post('/event', eventController.createOneEvent);
-router.get('/event/:id', eventController.getOneEvent);
+router.get('/event/:idOrSlug', eventController.getOneEvent);
 router.patch('/event/:id', eventController.updateOneEvent);
 router.delete('/event/:id', eventController.deleteOneEvent);
 router.patch('/event/:id/register', eventController.addParticipantToEvent);

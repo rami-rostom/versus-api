@@ -1,8 +1,11 @@
 ### Render all events
 GET http://localhost:3000/events
 
-### Render one event
-GET http://localhost:3000/event/4
+### Render one event with id
+GET http://localhost:3000/event/2
+
+### Render one event with slug
+GET http://localhost:3000/event/smash-bros-by-versus
 
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1
