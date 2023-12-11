@@ -1,6 +1,19 @@
 const { User } = require('../models/index');
 
 const controller = {
+  getAllUsers: async (req, res) => {
+    try {
+      const users = await User.findAll({
+        include: ['role', 'socials', 'teams']
+      });
+
+      res.status(200).json(users);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   getOneUser: async (req, res) => {
     try {
       const { id } = req.params;

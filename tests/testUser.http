@@ -1,3 +1,6 @@
+### Render all users
+GET http://localhost:3000/users
+
 ### Render one user
 GET http://localhost:3000/user/4
 

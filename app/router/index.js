@@ -20,6 +20,7 @@ router.patch('/event/:id/register', eventController.addParticipantToEvent);
 router.patch('/event/:id/unregister', eventController.removeParticipantFromEvent);
 
 // USER
+router.get('/users', userController.getAllUsers);
 router.get('/user/:id', userController.getOneUser);
 router.patch('/user/:id', userController.updateOneUser);
 router.get('/user/:id/events', userController.getUserEvents);
