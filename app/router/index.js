@@ -35,6 +35,7 @@ router.patch('/user/:id/preferences/games', preferencesController.updateUserPref
 router.get('/teams', teamController.getAllTeams);
 router.post('/team', teamController.createOneTeam);
 router.get('/team/:id', teamController.getOneTeam);
+router.patch('/team/:id', teamController.updateOneTeam);
 router.delete('/team/:id', teamController.deleteOneTeam);
 router.patch('/team/:id/user', teamController.updateTeamPlayers);
 

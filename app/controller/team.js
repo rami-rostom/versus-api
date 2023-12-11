@@ -48,6 +48,29 @@ const controller = {
     }
   },
 
+  updateOneTeam: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const team = await Team.findByPk(id);
+
+      if (!team) {
+        return res.status(404).json({
+          'error': 'Team not found. Please verify the provided id.'
+        });
+      }
+
+      const { name } = req.body;
+
+      if (name) { team.name = name; }
+
+      await team.save();
+      res.json(team);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   updateTeamPlayers: async (req, res) => {
     try {
       const { id } = req.params;
