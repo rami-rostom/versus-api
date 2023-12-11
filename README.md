@@ -23,10 +23,13 @@ Application Programming Interface built using [Express](https://expressjs.com/fr
 
 ## :arrow_right: Endpoints
 
+API URL : `https://versus-api.onrender.com/`
+
 ### Event
 
 - **(GET)** Get all events : `/events`
-- **(GET)** Get an event : `/event/1`
+- **(GET)** Get an event (with id) : `/event/1`
+- **(GET)** Get an event (with slug) : `/event/smash-bros-by-versus`
 - **(POST)** Create a new event : `/event`
 - **(DELETE)** Delete an event : `/event/1`
 - **(PATCH)** Update an event : `/event/1`
@@ -35,6 +38,7 @@ Application Programming Interface built using [Express](https://expressjs.com/fr
 
 ### User
 
+- **(GET)** Get all users : `/users`
 - **(GET)** Get an user : `/user/1`
 - **(PATCH)** Update an user : `/user/1`
 - **(GET)** Get all events of an user : `/user/1/events`
@@ -49,58 +53,6 @@ Application Programming Interface built using [Express](https://expressjs.com/fr
 
 - **(POST)** Create a new user : `/signup`
 - **(POST)** Sign-in : `/login`
-
-<br />
-
-## :computer: Local Database Initialization
-
-Launch the Postgres server
-
-```bash
-  sudo -i -u postgres psql
-```
-
-Create a new user
-
-```bash
-  CREATE ROLE versus WITH LOGIN PASSWORD 'versus';
-```
-  (\du - to get all the users)
-
-Create the database
-
-```bash
-  CREATE DATABASE versus WITH OWNER versus;
-```
-  (\du - to get all the databases)
-
-Connect to the database
-
-```bash
-  \c versus versus;
-```
-  (\conninfo - to check the db)
-
-<br />
-
-## :computer: Database Creation and Seeding 
-
-Create the tables
-
-```bash
-  npm run db:create
-```
-
-Populate the tables
-
-```bash
-  npm run db:seed
-```
-
-Reset the database
-```bash
-  npm run db:reset
-```
 
 <br />
 
