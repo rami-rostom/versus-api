@@ -23,32 +23,7 @@ Application Programming Interface built using [Express](https://expressjs.com/fr
 
 ## :arrow_right: Endpoints
 
-### Event
-
-- **(GET)** Get all events : `/events`
-- **(GET)** Get an event : `/event/1`
-- **(POST)** Create a new event : `/event`
-- **(DELETE)** Delete an event : `/event/1`
-- **(PATCH)** Update an event : `/event/1`
-- **(PATCH)** Register at an event  : `/event/1/register`
-- **(PATCH)** Unregister from an event : `/event/1/unregister`
-
-### User
-
-- **(GET)** Get an user : `/user/1`
-- **(PATCH)** Update an user : `/user/1`
-- **(GET)** Get all events of an user : `/user/1/events`
-- **(GET)** Get all teams of an user : `/user/1/teams`
-
-### Preferences
-
-- **(PATCH)** Update user prefered platforms : `/user/1/preferences/platforms`
-- **(PATCH)** Update user prefered games : `/user/1/preferences/games`
-
-### Authentification
-
-- **(POST)** Create a new user : `/signup`
-- **(POST)** Sign-in : `/login`
+API URL : `https://versus-api.onrender.com/`
 
 <br />
 
@@ -101,7 +76,6 @@ Reset the database
 ```bash
   npm run db:reset
 ```
-
 <br />
 
 ## :notebook_with_decorative_cover: Acknowledgements

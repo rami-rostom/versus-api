@@ -9,15 +9,67 @@
   <h1>VERSUS - Documentation API</h1>
   <p>Les endpoints suivants permettent de récupérer et d'éditer les données de l'API.</p>
 
-  <h2>Événements</h2>
+  <h2>Event</h2>
   <ul>
-    <li><b>(GET)</b> Récupérer tous les événements : <a href="http://localhost:3000/events">/events</a></li>
-    <li><b>(GET)</b> Récupérer un événement : <a href="http://localhost:3000/event/1">/event/1</a></li>
-    <li><b>(POST)</b> Créer un événement : <a href="http://localhost:3000/event">/event</a></li>
-    <li><b>(DELETE)</b> Supprimer un événement : <a href="http://localhost:3000/event/1">/event/1</a></li>
-    <li><b>(PATCH)</b> Modifier un événement : <a href="http://localhost:3000/event/1">/event/1</a></li>
-    <li><b>(PATCH)</b> S'inscrire à un événement : <a href="http://localhost:3000/event/1/register">/event/1/register</a></li>
-    <li><b>(PATCH)</b> Se désinscrire d'un événement : <a href="http://localhost:3000/event/1/unregister">/event/1/unregister</a></li>
+    <li>
+      <b>[GET]</b> Get all events : <b>/events</b> <br> ➔ <em><a href="https://versus-api.onrender.com/events" target="_blank">https://versus-api.onrender.com/events</a></em>
+    </li>
+    <li>
+      <b>[GET]</b> Get an event with id : <b>/event/{id}</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event/1" target="_blank">https://versus-api.onrender.com/event/1</a></em>
+    </li>
+    <li>
+      <b>[GET]</b> Get an event with slug : <b>/event/{slug}</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event/smash-bros-by-versus" target="_blank">https://versus-api.onrender.com/event/smash-bros-by-versus</a></em>
+    </li>
+    <li>
+      <b>[POST]</b> Create a new event : <b>/event</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event" target="_blank">https://versus-api.onrender.com/event</a></em>
+    </li>
+    <li>
+      <b>[DELETE]</b> Delete an event : <b>/event/{id}</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event/1" target="_blank">https://versus-api.onrender.com/event/1</a></em>
+    </li>
+    <li>
+      <b>[PATCH]</b> Update an event : <b>/event/{id}</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event/1" target="_blank">https://versus-api.onrender.com/event/1</a></em>
+    </li>
+    <li>
+      <b>[PATCH]</b> Register at an event : <b>/event/{id}/register</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event/1/register" target="_blank">https://versus-api.onrender.com/event/1/register</a></em>
+    </li>
+    <li>
+      <b>[PATCH]</b> Unregister from an event : <b>/event/{id}/unregister</b> <br> ➔ <em><a href="https://versus-api.onrender.com/event/1/unregister" target="_blank">https://versus-api.onrender.com/event/1/unregister</a></em>
+    </li>
+  </ul>
+
+  <h2>User</h2>
+  <ul>
+    <li>
+      <b>[GET]</b> Get all users : <b>/users</b> <br> ➔ <em><a href="https://versus-api.onrender.com/users" target="_blank">https://versus-api.onrender.com/users</a></em>
+    </li>
+    <li>
+      <b>[GET]</b> Get an user : <b>/user/{id}</b> <br> ➔ <em><a href="https://versus-api.onrender.com/user/1" target="_blank">https://versus-api.onrender.com/user/1</a></em>
+    </li>
+    <li>
+      <b>[PATCH]</b> Update an user : <b>/user/{id}</b> <br> ➔ <em><a href="https://versus-api.onrender.com/user/1" target="_blank">https://versus-api.onrender.com/user/1</a></em>
+    </li>
+    <li>
+      <b>[GET]</b> Get all events of an user : <b>/user/{id}/events</b> <br> ➔ <em><a href="https://versus-api.onrender.com/user/1/events" target="_blank">https://versus-api.onrender.com/user/1/events</a></em>
+    </li>
+    <li>
+      <b>[GET]</b> Get all teams of an user : <b>/user/{id}/teams</b> <br> ➔ <em><a href="https://versus-api.onrender.com/user/1/teams" target="_blank">https://versus-api.onrender.com/user/1/teams</a></em>
+    </li>
+    <li>
+      <b>[PATCH]</b> Update user prefered platforms : <b>/user/{id}/preferences/platforms</b> <br> ➔ <em><a href="https://versus-api.onrender.com/user/1/preferences/platforms" target="_blank">https://versus-api.onrender.com/user/1/preferences/platforms</a></em>
+    </li>
+    <li>
+      <b>[PATCH]</b> Update user prefered games : <b>/user/{id}/preferences/games</b> <br> ➔ <em><a href="https://versus-api.onrender.com/user/1/preferences/games" target="_blank">https://versus-api.onrender.com/user/1/preferences/games</a></em>
+    </li>
+  </ul>
+
+  <h2>Authentification</h2>
+  <ul>
+    <li>
+      <b>[POST]</b> Create a new user : <b>/signup</b> <br> ➔ <em><a href="https://versus-api.onrender.com/signup" target="_blank">https://versus-api.onrender.com/signup</a></em>
+    </li>
+    <li>
+      <b>[POST]</b> Sign-in : <b>/login</b> <br> ➔ <em><a href="https://versus-api.onrender.com/login" target="_blank">https://versus-api.onrender.com/login</a></em>
+    </li>
   </ul>
 </body>
 </html>

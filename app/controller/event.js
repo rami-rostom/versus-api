@@ -17,10 +17,21 @@ const controller = {
 
   getOneEvent: async (req, res) => {
     try {
-      const { id } = req.params;
-      const event = await Event.findByPk(id, {
-        include: ['game', 'organizer', 'type_event', 'participants']
-      });
+      const { idOrSlug } = req.params;
+      const isId = !isNaN(idOrSlug);
+
+      let event;
+
+      if (isId) {
+        event = await Event.findByPk(idOrSlug, {
+          include: ['game', 'organizer', 'type_event', 'participants']
+        });
+      } else {
+        event = await Event.findOne({
+          where: { title_slug: idOrSlug },
+          include: ['game', 'organizer', 'type_event', 'participants']
+        });
+      }
 
       if (event) {
         res.status(200).json(event);
