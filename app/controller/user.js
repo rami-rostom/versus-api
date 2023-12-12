@@ -1,6 +1,17 @@
 const { User } = require('../models/index');
 
 const controller = {
+  getAllUsers: async (req, res) => {
+    try {
+      const users = await User.findAll();
+
+      res.status(200).json(users);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   getOneUser: async (req, res) => {
     try {
       const { id } = req.params;
@@ -13,7 +24,7 @@ const controller = {
           'teams',
           'platforms',
           'games',
-          'like_users',
+          'followers',
           'like_teams'
         ]
       });
@@ -89,6 +100,60 @@ const controller = {
       const userTeams = await user.getTeams();
 
       res.status(200).json(userTeams);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  followUser: async (req, res) => {
+    try {
+      // User who wants to follow
+      const { user_id } = req.body;
+
+      // User to follow
+      const { id } = req.params;
+
+      const userFollower = await User.findByPk(user_id);
+      const userToFollow = await User.findByPk(id);
+
+      if (!userToFollow) {
+        return res.status(404).json({
+          'error': 'User not found. Please verify the provided id.'
+        });
+      }
+
+      await userToFollow.addFollowing(userFollower, {
+        through: { user_liked_id: user_id }
+      });
+      res.status(200).json({ message: 'User followed successfully.' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
+  unfollowUser: async (req, res) => {
+    try {
+      // User who wants to unfollow
+      const { user_id } = req.body;
+
+      // User to unfollow
+      const { id } = req.params;
+
+      const userFollower = await User.findByPk(user_id);
+      const userToUnfollow = await User.findByPk(id);
+
+      if (!userToUnfollow) {
+        return res.status(404).json({
+          'error': 'User not found. Please verify the provided id.'
+        });
+      }
+
+      await userToUnfollow.removeFollowing(userFollower, {
+        through: { user_liked_id: user_id }
+      });
+      res.status(200).json({ message: 'User unfollowed successfully.' });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

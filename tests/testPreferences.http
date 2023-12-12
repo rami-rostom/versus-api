@@ -13,3 +13,11 @@ content-type: application/json
 {
     "game_id": 5
 }
+
+### Update user preferences of an user
+POST http://localhost:3000/user/1/preferences/users HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 2
+}

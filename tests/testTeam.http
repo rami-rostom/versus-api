@@ -1,0 +1,32 @@
+### Render all teams
+GET http://localhost:3000/teams
+
+### Render one team
+GET http://localhost:3000/team/2
+
+### Create a team
+POST http://localhost:3000/team HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Cheesecake"
+}
+
+### Update one team
+PATCH http://localhost:3000/team/2 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Le 18ème"
+}
+
+### Delete one event
+DELETE  http://localhost:3000/team/3
+
+### Update user of a team
+PATCH http://localhost:3000/team/2/user HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 2
+}

@@ -100,7 +100,10 @@ const controller = {
         user_id
       } = req.body;
 
+      const titleSlugified = slugify(title, { lower: true });
+
       if (title) { event.title = title; }
+      if (title) { event.title_slug = titleSlugified; }
       if (start_date) { event.start_date = start_date; }
       if (end_date) { event.end_date = end_date; }
       if (banner) { event.banner = banner; }

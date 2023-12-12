@@ -1,5 +1,8 @@
+### Render all users
+GET http://localhost:3000/users
+
 ### Render one user
-GET http://localhost:3000/user/4
+GET http://localhost:3000/user/1
 
 ### Update one user
 PATCH http://localhost:3000/user/1 HTTP/1.1
@@ -14,3 +17,19 @@ GET http://localhost:3000/user/1/events
 
 ### Get teams of an user
 GET http://localhost:3000/user/1/teams
+
+### Follow an user
+POST http://localhost:3000/user/2/follow HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 1
+}
+
+### Unfollow an user
+POST http://localhost:3000/user/1/unfollow HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 1
+}
