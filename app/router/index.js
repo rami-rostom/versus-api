@@ -7,6 +7,7 @@ const { userController } = require('../controller');
 const { preferencesController } = require('../controller');
 const { authController } = require('../controller');
 const { teamController } = require('../controller');
+const { searchController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -44,5 +45,11 @@ router.patch('/team/:id/user', teamController.updateTeamPlayers);
 // AUTHENTIFICATION
 router.post('/signup', authController.handleSignUp);
 router.post('/login', authController.handleSignIn);
+
+// SEARCH
+router.get('/search/event', searchController.searchEvent);
+router.get('/search/user', searchController.searchUser);
+router.get('/search/team', searchController.searchTeam);
+router.get('/search/all', searchController.searchAll);
 
 module.exports = router;

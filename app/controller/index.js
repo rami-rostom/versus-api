@@ -4,6 +4,7 @@ const userController = require('./user');
 const preferencesController = require('./preferences');
 const authController = require('./auth');
 const teamController = require('./team');
+const searchController = require('./search');
 
 module.exports = {
   homeController,
@@ -11,5 +12,6 @@ module.exports = {
   userController,
   preferencesController,
   authController,
-  teamController
+  teamController,
+  searchController
 };
