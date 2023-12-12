@@ -97,16 +97,16 @@ Team.belongsToMany(User, {
 
 // Un utilisateur peut suivre plusieurs autres utilisateurs et un utilisateur peut être suivi par plusieurs utilisateurs
 User.belongsToMany(User, {
-  as: 'like_users',
+  as: 'followers',
   through: 'user_like_user',
   foreignKey: 'user_id',
-  otherKey: 'user_id',
+  otherKey: 'user_liked_id',
   updatedAt: false
 });
 User.belongsToMany(User, {
-  as: 'users',
+  as: 'following',
   through: 'user_like_user',
-  foreignKey: 'user_id',
+  foreignKey: 'user_liked_id',
   otherKey: 'user_id',
   updatedAt: false
 });

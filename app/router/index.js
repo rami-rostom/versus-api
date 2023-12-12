@@ -26,6 +26,9 @@ router.get('/user/:id', userController.getOneUser);
 router.patch('/user/:id', userController.updateOneUser);
 router.get('/user/:id/events', userController.getUserEvents);
 router.get('/user/:id/teams', userController.getUserTeams);
+router.post('/user/:id/follow', userController.followUser);
+router.post('/user/:id/unfollow', userController.unfollowUser);
+
 
 // PREFERENCES
 router.patch('/user/:id/preferences/platforms', preferencesController.updateUserPreferedPlatform);
