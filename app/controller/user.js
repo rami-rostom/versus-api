@@ -3,9 +3,7 @@ const { User } = require('../models/index');
 const controller = {
   getAllUsers: async (req, res) => {
     try {
-      const users = await User.findAll({
-        include: ['role', 'socials', 'teams']
-      });
+      const users = await User.findAll();
 
       res.status(200).json(users);
     } catch (error) {
@@ -110,7 +108,10 @@ const controller = {
 
   followUser: async (req, res) => {
     try {
+      // User who wants to follow
       const { user_id } = req.body;
+
+      // User to follow
       const { id } = req.params;
 
       const userFollower = await User.findByPk(user_id);
@@ -134,7 +135,10 @@ const controller = {
 
   unfollowUser: async (req, res) => {
     try {
+      // User who wants to unfollow
       const { user_id } = req.body;
+
+      // User to unfollow
       const { id } = req.params;
 
       const userFollower = await User.findByPk(user_id);
