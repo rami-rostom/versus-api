@@ -19,15 +19,11 @@ content-type: application/json
 }
 
 ### Update an event
-PATCH http://localhost:3000/event/4 HTTP/1.1
+PATCH http://localhost:3000/event/1 HTTP/1.1
 content-type: application/json
 
 {
-    "location": "En ligne",
-    "description": "Tournoi VERSUS Smash Bros",
-    "contact": "ramirez@versus.gg",
-    "game_id": 4,
-    "type_event_id": 1
+    "title": "Trackmania by VERSUS"
 }
 
 ### Delete one event
