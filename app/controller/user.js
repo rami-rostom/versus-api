@@ -25,7 +25,8 @@ const controller = {
           'platforms',
           'games',
           'followers',
-          'like_teams'
+          'like_teams',
+          'likeEvents'
         ]
       });
 

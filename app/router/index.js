@@ -33,6 +33,7 @@ router.post('/user/:id/unfollow', userController.unfollowUser);
 // PREFERENCES
 router.patch('/user/:id/preferences/platforms', preferencesController.updateUserPreferedPlatform);
 router.patch('/user/:id/preferences/games', preferencesController.updateUserPreferedGame);
+router.patch('/user/:id/preferences/events', preferencesController.updateUserPreferedEvent);
 
 // TEAM
 router.get('/teams', teamController.getAllTeams);
