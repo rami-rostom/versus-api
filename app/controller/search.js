@@ -84,39 +84,39 @@ const controller = {
       }
 
       const resultQuery = {
-        eventsResult: [],
-        usersResult: [],
-        teamsResult: []
+        events: [],
+        users: [],
+        teams: []
       };
 
-      const events = await Event.findAll({
+      const eventsQuery = await Event.findAll({
         where: { title: {
           [Op.iLike]: `%${query}%`
         }}
       });
-      
-      events.forEach(event => {
-        resultQuery.eventsResult.push(event);
+
+      eventsQuery.forEach(event => {
+        resultQuery.events.push(event);
       });
 
-      const users = await User.findAll({
+      const usersQuery = await User.findAll({
         where: { username: {
           [Op.iLike]: `%${query}%`
         }}
       });
 
-      users.forEach(user => {
-        resultQuery.usersResult.push(user);
+      usersQuery.forEach(user => {
+        resultQuery.users.push(user);
       });
 
-      const teams = await Team.findAll({
+      const teamsQuery = await Team.findAll({
         where: { name: {
           [Op.iLike]: `%${query}%`
         }}
       });
 
-      teams.forEach(team => {
-        resultQuery.teamsResult.push(team);
+      teamsQuery.forEach(team => {
+        resultQuery.teams.push(team);
       });
 
       res.status(200).json(resultQuery);
