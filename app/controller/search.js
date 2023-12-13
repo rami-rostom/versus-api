@@ -79,7 +79,7 @@ const controller = {
 
       if (!query) {
         return res.status(400).json({
-          'error': 'Missing team name in the query.'
+          'error': 'The query is empty.'
         });
       }
 
