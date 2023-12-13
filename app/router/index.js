@@ -8,6 +8,8 @@ const { preferencesController } = require('../controller');
 const { authController } = require('../controller');
 const { teamController } = require('../controller');
 const { searchController } = require('../controller');
+const { gameController } = require('../controller');
+const { typeEventController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -52,5 +54,11 @@ router.get('/search/event', searchController.searchEvent);
 router.get('/search/user', searchController.searchUser);
 router.get('/search/team', searchController.searchTeam);
 router.get('/search/all', searchController.searchAll);
+
+// GAME
+router.get('/games', gameController.getAllGames);
+
+// TYPE EVENT
+router.get('/types', typeEventController.getAllTypesEvent);
 
 module.exports = router;

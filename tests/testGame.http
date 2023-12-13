@@ -1,0 +1,2 @@
+### Render all games
+GET http://localhost:3000/games

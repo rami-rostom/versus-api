@@ -89,6 +89,7 @@ const controller = {
         start_date,
         end_date,
         banner,
+        thumbnail,
         location,
         status,
         description,
@@ -107,6 +108,7 @@ const controller = {
       if (start_date) { event.start_date = start_date; }
       if (end_date) { event.end_date = end_date; }
       if (banner) { event.banner = banner; }
+      if (thumbnail) { event.thumbnail = thumbnail; }
       if (location) { event.location = location; }
       if (status) { event.status = status; }
       if (description) { event.description = description; }
