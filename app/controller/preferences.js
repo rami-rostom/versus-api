@@ -59,6 +59,36 @@ const controller = {
       console.log(error);
       res.status(500).json(error.toString());
     }
+  },
+
+  updateUserPreferedEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { event_id } = req.body;
+
+      const user = await User.findByPk(id);
+
+      if (!user) {
+        return res.status(404).json({
+          'error': 'User not found. Please verify the provided id.'
+        });
+      }
+
+      const userFollowEvent = await user.getLikeEvents();
+
+      const isFollowed = userFollowEvent.find((event) => event.id === event_id);
+
+      if (!isFollowed) {
+        await user.addLikeEvents(event_id);
+        res.json({ message: 'New event followed.' });
+      } else {
+        await user.removeLikeEvents(event_id);
+        res.json({ message: 'Event is now unfollow.' });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
   }
 };
 

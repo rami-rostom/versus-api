@@ -15,9 +15,9 @@ content-type: application/json
 }
 
 ### Update user preferences of an user
-POST http://localhost:3000/user/1/preferences/users HTTP/1.1
+PATCH http://localhost:3000/user/1/preferences/events HTTP/1.1
 content-type: application/json
 
 {
-    "user_id": 2
+    "event_id": 2
 }

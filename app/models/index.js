@@ -191,4 +191,20 @@ Team.belongsToMany(Event, {
   updatedAt: false
 });
 
+// Un utilisateur peut suivre plusieurs events et un event peut être suivi par plusieurs utilisateurs
+User.belongsToMany(Event, {
+  as: 'likeEvents',
+  through: 'user_like_event',
+  foreignKey: 'user_id',
+  otherKey: 'event_id',
+  updatedAt: false
+});
+Event.belongsToMany(User, {
+  as: 'users',
+  through: 'user_like_event',
+  foreignKey: 'event_id',
+  otherKey: 'user_id',
+  updatedAt: false
+});
+
 module.exports = { User, Event, Game, Platform, Role, Social, Team, TypeEvent };

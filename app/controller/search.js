@@ -83,26 +83,41 @@ const controller = {
         });
       }
 
-      const events = await Event.findAll({
+      const resultQuery = {
+        events: [],
+        users: [],
+        teams: []
+      };
+
+      const eventsQuery = await Event.findAll({
         where: { title: {
           [Op.iLike]: `%${query}%`
         }}
       });
 
-      const users = await User.findAll({
+      eventsQuery.forEach(event => {
+        resultQuery.events.push(event);
+      });
+
+      const usersQuery = await User.findAll({
         where: { username: {
           [Op.iLike]: `%${query}%`
         }}
       });
 
-      const teams = await Team.findAll({
+      usersQuery.forEach(user => {
+        resultQuery.users.push(user);
+      });
+
+      const teamsQuery = await Team.findAll({
         where: { name: {
           [Op.iLike]: `%${query}%`
         }}
       });
 
-      // Merge users and teams array in event's array
-      const resultQuery = events.concat(users, teams);
+      teamsQuery.forEach(team => {
+        resultQuery.teams.push(team);
+      });
 
       res.status(200).json(resultQuery);
     } catch (error) {
