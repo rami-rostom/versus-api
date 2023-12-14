@@ -50,6 +50,16 @@ Event.belongsTo(Game, {
   foreignKey: 'game_id'
 });
 
+// Un event est lié à une platform
+Platform.hasMany(Event, {
+  as: 'event_platform',
+  foreignKey: 'platform_id'
+});
+Event.belongsTo(Platform, {
+  as: 'platform',
+  foreignKey: 'platform_id'
+});
+
 // Un event a un organisateur
 User.hasMany(Event, {
   as: 'organize',

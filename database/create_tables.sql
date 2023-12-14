@@ -16,7 +16,8 @@ DROP TABLE IF EXISTS
 "user_like_game",
 "game_has_platform",
 "event_has_user",
-"event_has_team";
+"event_has_team",
+"user_like_event";
 
 CREATE TABLE "role" (
   "id" SERIAL PRIMARY KEY,
@@ -89,6 +90,7 @@ CREATE TABLE "event" (
   "contact" TEXT,
   "type_event_id" INTEGER REFERENCES "type_event"("id") ON DELETE CASCADE,
   "game_id" INTEGER REFERENCES "game"("id") ON DELETE CASCADE,
+  "platform_id" INTEGER REFERENCES "platform"("id") ON DELETE CASCADE,
   "user_id" INTEGER REFERENCES "user"("id") ON DELETE CASCADE,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   "updated_at" TIMESTAMPTZ

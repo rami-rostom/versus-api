@@ -5,7 +5,7 @@ const controller = {
   getAllEvent: async (_, res) => {
     try {
       const events = await Event.findAll({
-        include: ['game', 'organizer', 'type_event']
+        include: ['game', 'organizer', 'type_event', 'platform']
       });
 
       res.status(200).json(events);
@@ -24,12 +24,12 @@ const controller = {
 
       if (isId) {
         event = await Event.findByPk(idOrSlug, {
-          include: ['game', 'organizer', 'type_event', 'participants']
+          include: ['game', 'platform', 'organizer', 'type_event', 'participants']
         });
       } else {
         event = await Event.findOne({
           where: { title_slug: idOrSlug },
-          include: ['game', 'organizer', 'type_event', 'participants']
+          include: ['game', 'platform', 'organizer', 'type_event', 'participants']
         });
       }
 
@@ -53,6 +53,16 @@ const controller = {
       if (!title || !start_date || !end_date || !user_id) {
         return res.status(400).json({
           'error': 'Missing body parameter(s)'
+        });
+      }
+
+      const titleCheck = await Event.findOne({
+        where: { title }
+      });
+
+      if (titleCheck) {
+        return res.status(400).json({
+          'error': 'Title already used. Please try with a different title.'
         });
       }
 
@@ -98,13 +108,10 @@ const controller = {
         result,
         type_event_id,
         game_id,
+        platform_id,
         user_id
       } = req.body;
 
-      const titleSlugified = slugify(title, { lower: true });
-
-      if (title) { event.title = title; }
-      if (title) { event.title_slug = titleSlugified; }
       if (start_date) { event.start_date = start_date; }
       if (end_date) { event.end_date = end_date; }
       if (banner) { event.banner = banner; }
@@ -117,7 +124,13 @@ const controller = {
       if (result) { event.result = result; }
       if (type_event_id) { event.type_event_id = type_event_id; }
       if (game_id) { event.game_id = game_id; }
+      if (platform_id) { event.platform_id = platform_id; }
       if (user_id) { event.user_id = user_id; }
+      if (title) { event.title = title; }
+      if (title) {
+        const titleSlugified = slugify(title, { lower: true });
+        event.title_slug = titleSlugified;
+      }
 
       await event.save();
       res.json(event);

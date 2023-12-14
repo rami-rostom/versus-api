@@ -19,15 +19,16 @@ content-type: application/json
 }
 
 ### Update an event
-PATCH http://localhost:3000/event/1 HTTP/1.1
+PATCH http://localhost:3000/event/2 HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Trackmania by VERSUS"
+    "game_id": 4,
+    "platform_id": 1
 }
 
 ### Delete one event
-DELETE  http://localhost:3000/event/2
+DELETE  http://localhost:3000/event/13
 
 ### Register to an event
 PATCH http://localhost:3000/event/4/register HTTP/1.1

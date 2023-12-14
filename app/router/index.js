@@ -10,6 +10,7 @@ const { teamController } = require('../controller');
 const { searchController } = require('../controller');
 const { gameController } = require('../controller');
 const { typeEventController } = require('../controller');
+const { platformController } = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);
@@ -60,5 +61,8 @@ router.get('/games', gameController.getAllGames);
 
 // TYPE EVENT
 router.get('/types', typeEventController.getAllTypesEvent);
+
+// PLATFORM
+router.get('/platforms', platformController.getAllPlatforms);
 
 module.exports = router;

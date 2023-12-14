@@ -5,9 +5,8 @@ INSERT INTO "role"("name") VALUES
 ('member');
 
 INSERT INTO "user"("username", "email", "password", "avatar", "role_id") VALUES
-('ramirez', 'rami@versus.gg', 'ramirez', null, 2),
-('sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'sasha', null, 2),
-('admin', 'admin@versus.gg', 'admin', null, 1);
+('ramirez', 'rami@versus.gg', 'Ramirez1!', null, 2),
+('sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'Password1!', null, 2);
 
 INSERT INTO "social"("name", "link", "user_id") VALUES
 ('Discord', 'http://discordapp.com/users/1090616418468380723', 1),
@@ -25,7 +24,8 @@ INSERT INTO "platform"("name") VALUES
 ('Xbox One'),
 ('Nintendo Switch'),
 ('Mobile'),
-('Rétro');
+('Rétro'),
+('Crossplatform');
 
 INSERT INTO "game"("name", "thumbnail") VALUES
 ('Trackmania', 'https://static-cdn.jtvnw.net/ttv-boxart/687129551_IGDB-285x380.jpg'),
@@ -59,10 +59,11 @@ INSERT INTO "event"(
   "rules", 
   "contact", 
   "type_event_id", 
-  "game_id", 
+  "game_id",
+  "platform_id", 
   "user_id"
   ) VALUES
-('Trackmania - Speedrun by VERSUS', null, '01/01/2024', '01/01/2024', null, null, 'En ligne', 'draft', 'Tournoi Trackmania by VERSUS', null, 'ramirez@versus.gg', 2, 1, 1);
+('Trackmania by VERSUS', 'trackmania-by-versus', '01/01/2024', '01/01/2024', null, null, 'En ligne', 'draft', 'Tournoi Trackmania by VERSUS', null, 'ramirez@versus.gg', 1, 1, 1, 1);
 
 INSERT INTO "user_has_team"("user_id", "team_id") VALUES
 (1, 1);

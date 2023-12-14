@@ -7,6 +7,7 @@ const teamController = require('./team');
 const searchController = require('./search');
 const gameController = require('./game');
 const typeEventController = require('./typeEvent');
+const platformController = require('./platform');
 
 module.exports = {
   homeController,
@@ -17,5 +18,6 @@ module.exports = {
   teamController,
   searchController,
   gameController,
-  typeEventController
+  typeEventController,
+  platformController
 };
