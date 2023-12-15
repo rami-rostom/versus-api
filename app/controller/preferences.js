@@ -16,15 +16,17 @@ const controller = {
 
       const userPlatforms = await user.getPlatforms();
 
-      const isPrefered = userPlatforms.find((platform) => platform.id === platform_id);
+      for (const platform of platform_id) {
+        const isPrefered = userPlatforms.find((userPlatform) => userPlatform.id === platform);
 
-      if (!isPrefered) {
-        await user.addPlatforms(platform_id);
-        res.json({ message: 'New favorite platform updated.' });
-      } else {
-        await user.removePlatforms(platform_id);
-        res.json({ message: 'Platform removed from favorites.' });
+        if (!isPrefered) {
+          await user.addPlatforms(platform);
+        } else {
+          await user.removePlatforms(platform);
+        }
       }
+
+      res.json({ message: 'Platform preferences updated.' });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
@@ -46,15 +48,17 @@ const controller = {
 
       const userGames = await user.getGames();
 
-      const isPrefered = userGames.find((game) => game.id === game_id);
+      for (const game of game_id) {
+        const isPrefered = userGames.find((userGame) => userGame.id === game);
 
-      if (!isPrefered) {
-        await user.addGames(game_id);
-        res.json({ message: 'New favorite game updated.' });
-      } else {
-        await user.removeGames(game_id);
-        res.json({ message: 'Game removed from favorites.' });
+        if (!isPrefered) {
+          await user.addGames(game);
+        } else {
+          await user.removeGames(game);
+        }
       }
+
+      res.json({ message: 'Game preferences updated.' });
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());
