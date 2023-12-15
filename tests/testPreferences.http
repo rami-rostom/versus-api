@@ -3,7 +3,7 @@ PATCH http://localhost:3000/user/1/preferences/platforms HTTP/1.1
 content-type: application/json
 
 {
-    "platform_id": 5
+    "platform_id": [2]
 }
 
 ### Update game preferences of an user
@@ -11,10 +11,10 @@ PATCH http://localhost:3000/user/1/preferences/games HTTP/1.1
 content-type: application/json
 
 {
-    "game_id": 5
+    "game_id": [1, 4]
 }
 
-### Update user preferences of an user
+### Update user preferences of an event
 PATCH http://localhost:3000/user/1/preferences/events HTTP/1.1
 content-type: application/json
 
