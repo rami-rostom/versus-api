@@ -59,7 +59,7 @@ const controller = {
         role_id: 2
       });
 
-      res.status(200).json({
+      res.status(201).json({
         message: 'User created, you can now login'
       });
     } catch (error) {
@@ -71,6 +71,8 @@ const controller = {
   handleSignIn: async (req, res) => {
     try {
       const { email, password } = req.body;
+
+      // console.log(req.header);
 
       if (!email || !password) {
         return res.status(400).json({
@@ -103,6 +105,8 @@ const controller = {
       };
 
       bcrypt.compare(password, userFound.password, verificationBcrypt);
+
+      // console.log(req.header);
     } catch (error) {
       console.log(error);
       res.status(500).json(error.toString());

@@ -10,9 +10,10 @@ GET http://localhost:3000/event/smash-bros-by-versus
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1
 content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTcwMjczNDM3NiwiZXhwIjoxNzAyODIwNzc2fQ.95TlhPenLmvZ00P5jHMS0r1wdCrxnDw3B0bMuNjCr6Y
 
 {
-    "title": "Smash Bros by VERSUS",
+    "title": "Smash Bros by VERSUS 3",
     "start_date": "2024-01-01",
     "end_date": "2024-01-01",
     "user_id": 1
@@ -21,14 +22,14 @@ content-type: application/json
 ### Update an event
 PATCH http://localhost:3000/event/2 HTTP/1.1
 content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTcwMjczNDM3NiwiZXhwIjoxNzAyODIwNzc2fQ.95TlhPenLmvZ00P5jHMS0r1wdCrxnDw3B0bMuNjCr6Y
 
 {
-    "game_id": 4,
-    "platform_id": 1
+    "contact": "rami@versus.gg"
 }
 
 ### Delete one event
-DELETE  http://localhost:3000/event/13
+DELETE  http://localhost:3000/event/6
 
 ### Register to an event
 PATCH http://localhost:3000/event/4/register HTTP/1.1
