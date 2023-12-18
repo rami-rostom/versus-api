@@ -29,6 +29,7 @@ CREATE TABLE "role" (
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "username" TEXT NOT NULL UNIQUE,
+  "username_slug" TEXT,
   "email" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
   "avatar" TEXT,

@@ -15,6 +15,20 @@ const controller = {
     }
   },
 
+  getAllPublishedEvent: async (_, res) => {
+    try {
+      const events = await Event.findAll({
+        where: { status: 'published' },
+        include: ['game', 'organizer', 'type_event', 'platform']
+      });
+
+      res.status(200).json(events);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error.toString());
+    }
+  },
+
   getOneEvent: async (req, res) => {
     try {
       const { idOrSlug } = req.params;

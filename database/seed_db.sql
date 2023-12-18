@@ -4,9 +4,9 @@ INSERT INTO "role"("name") VALUES
 ('admin'),
 ('member');
 
-INSERT INTO "user"("username", "email", "password", "avatar", "role_id") VALUES
-('ramirez', 'rami@versus.gg', 'Ramirez1!', null, 2),
-('sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'Password1!', null, 2);
+INSERT INTO "user"("username", "username_slug", "email", "password", "avatar", "role_id") VALUES
+('ramirez', 'ramirez', 'rami@versus.gg', 'Ramirez1!', null, 2),
+('sasha_de_porte_de_la_chapelle', 'sasha_de_porte_de_la_chapelle', 'sasha@versus.gg', 'Password1!', null, 2);
 
 INSERT INTO "social"("name", "link", "user_id") VALUES
 ('Discord', 'http://discordapp.com/users/1090616418468380723', 1),

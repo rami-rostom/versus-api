@@ -14,21 +14,43 @@ const controller = {
 
   getOneUser: async (req, res) => {
     try {
-      const { id } = req.params;
-      const user = await User.findByPk(id, {
-        include: [
-          'role',
-          'socials',
-          'events',
-          'organize',
-          'teams',
-          'platforms',
-          'games',
-          'followers',
-          'like_teams',
-          'likeEvents'
-        ]
-      });
+      const { idOrSlug } = req.params;
+      const isId = !isNaN(idOrSlug);
+
+      let user;
+
+      if (isId) {
+        user = await User.findByPk(idOrSlug, {
+          include: [
+            'role',
+            'socials',
+            'events',
+            'organize',
+            'teams',
+            'platforms',
+            'games',
+            'followers',
+            'like_teams',
+            'likeEvents'
+          ]
+        });
+      } else {
+        user = await User.findOne({
+          where: { username_slug: idOrSlug },
+          include: [
+            'role',
+            'socials',
+            'events',
+            'organize',
+            'teams',
+            'platforms',
+            'games',
+            'followers',
+            'like_teams',
+            'likeEvents'
+          ]
+        });
+      }
 
       if (user) {
         res.status(200).json(user);

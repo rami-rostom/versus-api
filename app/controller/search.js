@@ -119,6 +119,14 @@ const controller = {
         resultQuery.teams.push(team);
       });
 
+      if (
+        resultQuery.events.length === 0 && 
+        resultQuery.users.length === 0 && 
+        resultQuery.teams.length === 0
+      ) {
+        return res.status(204);
+      }
+
       res.status(200).json(resultQuery);
     } catch (error) {
       console.log(error);

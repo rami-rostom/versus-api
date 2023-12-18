@@ -59,7 +59,7 @@ const controller = {
         role_id: 2
       });
 
-      res.status(200).json({
+      res.status(201).json({
         message: 'User created, you can now login'
       });
     } catch (error) {
@@ -92,8 +92,7 @@ const controller = {
         if (resBycrypt) {
           return res.status(200).json({
             'userId': userFound.id,
-            'token': jwt.generateTokenForUser(userFound),
-            'isConnected': true
+            'token': jwt.generateTokenForUser(userFound)
           });
         } else {
           return res.status(400).json({
