@@ -1,15 +1,13 @@
 const { User } = require('../models/index');
 
 const controller = {
-  getAllUsers: async (req, res) => {
-   
+  getAllUsers: async (_, res) => {
     const users = await User.findAll();
 
     res.status(200).json(users);
   },
 
   getOneUser: async (req, res) => {
-    
     const { idOrSlug } = req.params;
     const isId = !isNaN(idOrSlug);
 
@@ -58,7 +56,6 @@ const controller = {
   },
 
   updateOneUser: async (req, res) => {
-   
     const { id } = req.params;
     const user = await User.findByPk(id);
 
@@ -74,11 +71,11 @@ const controller = {
     if (avatar) { user.avatar = avatar; }
 
     await user.save();
-    res.json(user);
+
+    res.status(200).json(user);
   },
 
   getUserEvents: async (req, res) => {
-    
     const { id } = req.params;
     const user = await User.findByPk(id);
 
@@ -94,7 +91,6 @@ const controller = {
   },
 
   getUserTeams: async (req, res) => {
-   
     const { id } = req.params;
     const user = await User.findByPk(id);
 
@@ -110,7 +106,6 @@ const controller = {
   },
 
   followUser: async (req, res) => {
-    
     // User who wants to follow
     const { user_id } = req.body;
 
@@ -129,11 +124,11 @@ const controller = {
     await userToFollow.addFollowing(userFollower, {
       through: { user_liked_id: user_id }
     });
+
     res.status(200).json({ message: 'User followed successfully.' });
   },
 
   unfollowUser: async (req, res) => {
-  
     // User who wants to unfollow
     const { user_id } = req.body;
 
@@ -152,8 +147,9 @@ const controller = {
     await userToUnfollow.removeFollowing(userFollower, {
       through: { user_liked_id: user_id }
     });
+
     res.status(200).json({ message: 'User unfollowed successfully.' });
-  },
+  }
 };
 
 module.exports = controller;

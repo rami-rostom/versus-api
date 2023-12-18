@@ -97,7 +97,7 @@ const controller = {
     };
 
     bcrypt.compare(password, userFound.password, verificationBcrypt);
-  },
+  }
 };
 
 module.exports = controller;

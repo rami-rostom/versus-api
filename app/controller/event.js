@@ -74,6 +74,7 @@ const controller = {
       status: 'draft',
       user_id
     });
+
     res.status(201).json(newEvent);
   },
 
@@ -126,7 +127,8 @@ const controller = {
     }
 
     await event.save();
-    res.json(event);
+  
+    res.status(200).json(event);
   },
 
   addParticipantToEvent: async (req, res) => {
@@ -143,7 +145,7 @@ const controller = {
   
     await event.addParticipants(user_id);
   
-    res.json({ message: 'User registered to the event' });
+    res.status(200).json({ message: 'User registered to the event' });
   },
 
   removeParticipantFromEvent: async (req, res) => {
@@ -160,7 +162,7 @@ const controller = {
 
     await event.removeParticipants(user_id);
   
-    res.json({ message: 'User unregistered from the event' });
+    res.status(200).json({ message: 'User unregistered from the event' });
   },
 
   deleteOneEvent: async (req, res) => {
@@ -174,8 +176,9 @@ const controller = {
     }
 
     await event.destroy();
-    res.json('Event deleted');
-  },
+
+    res.status(200).json('Event deleted');
+  }
 };
 
 module.exports = controller;

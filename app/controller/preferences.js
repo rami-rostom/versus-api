@@ -25,7 +25,7 @@ const controller = {
       }
     }
 
-    res.json({ message: 'Platform preferences updated.' });
+    res.status(200).json({ message: 'Platform preferences updated.' });
   },
 
   updateUserPreferedGame: async (req, res) => {
@@ -52,7 +52,7 @@ const controller = {
       }
     }
 
-    res.json({ message: 'Game preferences updated.' });
+    res.status(200).json({ message: 'Game preferences updated.' });
   },
 
   updateUserPreferedEvent: async (req, res) => {
@@ -73,10 +73,10 @@ const controller = {
 
     if (!isFollowed) {
       await user.addLikeEvents(event_id);
-      res.json({ message: 'New event followed.' });
+      res.status(200).json({ message: 'New event followed.' });
     } else {
       await user.removeLikeEvents(event_id);
-      res.json({ message: 'Event is now unfollow.' });
+      res.status(200).json({ message: 'Event is now unfollow.' });
     }
   }
 };

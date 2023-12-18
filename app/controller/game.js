@@ -5,7 +5,7 @@ const controller = {
     const games = await Game.findAll();
 
     res.status(200).json(games);
-  },
+  }
 };
 
 module.exports =  controller;

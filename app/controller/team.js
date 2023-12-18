@@ -2,7 +2,6 @@ const { Team } = require('../models/index');
 
 const controller = {
   getAllTeams: async (_, res) => {
-  
     const teams = await Team.findAll({
       include: ['players']
     });
@@ -11,7 +10,6 @@ const controller = {
   },
 
   getOneTeam: async (req, res) => {
-   
     const { id } = req.params;
 
     const team = await Team.findByPk(id, {
@@ -22,7 +20,6 @@ const controller = {
   },
 
   createOneTeam: async (req, res) => {
-  
     const { name } = req.body;
 
     if (!name) {
@@ -35,8 +32,8 @@ const controller = {
 
     res.status(201).json(newTeam);
   },
-  updateOneTeam: async (req, res) => {
 
+  updateOneTeam: async (req, res) => {
     const { id } = req.params;
     const team = await Team.findByPk(id);
 
@@ -47,15 +44,13 @@ const controller = {
     }
 
     const { name } = req.body;
-
     if (name) { team.name = name; }
-
     await team.save();
-    res.json(team);
+
+    res.status(200).json(team);
   },
 
   updateTeamPlayers: async (req, res) => {
-   
     const { id } = req.params;
     const { user_id } = req.body;
 
@@ -73,15 +68,14 @@ const controller = {
 
     if (!isMember) {
       await team.addPlayers(user_id);
-      res.json({ message: 'User added to the team' });
+      res.status(200).json({ message: 'User added to the team' });
     } else {
       await team.removePlayers(user_id);
-      res.json({ message: 'User removed from the team' });
+      res.status(200).json({ message: 'User removed from the team' });
     }
   },
 
   deleteOneTeam: async (req, res) => {
-    
     const { id } = req.params;
     const team = await Team.findByPk(id);
 
@@ -92,8 +86,9 @@ const controller = {
     }
 
     await team.destroy();
-    res.json('Team deleted');
-  },
+
+    res.status(200).json('Team deleted');
+  }
 };
 
 module.exports =  controller;
