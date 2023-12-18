@@ -65,6 +65,6 @@ router.get('/games', tryCatch(gameController.getAllGames));
 router.get('/types', tryCatch(typeEventController.getAllTypesEvent));
 
 // PLATFORM
-router.get('/platforms', platformController.getAllPlatforms);
+router.get('/platforms', tryCatch(platformController.getAllPlatforms));
 
 module.exports = router;
