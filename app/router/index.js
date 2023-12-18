@@ -27,13 +27,13 @@ router.patch('/event/:id/register', verifyToken, tryCatch(eventController.addPar
 router.patch('/event/:id/unregister', verifyToken, tryCatch(eventController.removeParticipantFromEvent));
 
 // USER
-router.get('/users', userController.getAllUsers);
-router.get('/user/:idOrSlug', userController.getOneUser);
-router.patch('/user/:id', verifyToken, userController.updateOneUser);
-router.get('/user/:id/events', userController.getUserEvents);
-router.get('/user/:id/teams', userController.getUserTeams);
-router.post('/user/:id/follow', verifyToken, userController.followUser);
-router.post('/user/:id/unfollow', verifyToken, userController.unfollowUser);
+router.get('/users', tryCatch(userController.getAllUsers));
+router.get('/user/:idOrSlug', tryCatch(userController.getOneUser));
+router.patch('/user/:id', verifyToken, tryCatch(userController.updateOneUser));
+router.get('/user/:id/events', tryCatch(userController.getUserEvents));
+router.get('/user/:id/teams', tryCatch(userController.getUserTeams));
+router.post('/user/:id/follow', verifyToken, tryCatch(userController.followUser));
+router.post('/user/:id/unfollow', verifyToken, tryCatch(userController.unfollowUser));
 
 // PREFERENCES
 router.patch('/user/:id/preferences/platforms', verifyToken, preferencesController.updateUserPreferedPlatform);
