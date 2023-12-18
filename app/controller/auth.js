@@ -10,103 +10,95 @@ const controller = {
     // Password require at least 8 characters, 1 capital letter and 1 number.
     const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm;
 
-    try {
-      const { email, password, confirmation } = req.body;
+   
+    const { email, password, confirmation } = req.body;
 
-      if (!email || !password) {
-        return res.status(400).json({
-          'error': 'Missing parameter(s).'
-        });
-      }      
+    if (!email || !password) {
+      return res.status(400).json({
+        'error': 'Missing parameter(s).'
+      });
+    }      
       
-      if (password !== confirmation) {
-        return res.status(400).json({
-          'error': 'Password and confirmation isn\'t matching.'
-        });
-      }
-
-      if (!EMAIL_REGEX.test(email)) {
-        return res.status(400).json({
-          'error': 'Email is not valid.'
-        });
-      }
-
-      if (!PASSWORD_REGEX.test(password)) {
-        return res.status(400).json({
-          'error': 'Password invalid (must be at least 8 characters, include one number, one capital letter and one special character).'
-        });
-      }
-
-      const emailCheck = await User.findOne({
-        where: { email }
+    if (password !== confirmation) {
+      return res.status(400).json({
+        'error': 'Password and confirmation isn\'t matching.'
       });
-
-      if (emailCheck) {
-        return res.status(400).json({
-          'error': 'Email already used. Please try with a different email.'
-        });
-      }
-
-      const passwordHashed = await bcrypt.hash(password, 10);
-
-      const uniqueId = uuidv4();
-
-      await User.create({
-        email,
-        username: uniqueId,
-        password: passwordHashed,
-        confirmation: passwordHashed,
-        role_id: 2
-      });
-
-      res.status(201).json({
-        message: 'User created, you can now login'
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
     }
+
+    if (!EMAIL_REGEX.test(email)) {
+      return res.status(400).json({
+        'error': 'Email is not valid.'
+      });
+    }
+
+    if (!PASSWORD_REGEX.test(password)) {
+      return res.status(400).json({
+        'error': 'Password invalid (must be at least 8 characters, include one number, one capital letter and one special character).'
+      });
+    }
+
+    const emailCheck = await User.findOne({
+      where: { email }
+    });
+
+    if (emailCheck) {
+      return res.status(400).json({
+        'error': 'Email already used. Please try with a different email.'
+      });
+    }
+
+    const passwordHashed = await bcrypt.hash(password, 10);
+
+    const uniqueId = uuidv4();
+
+    await User.create({
+      email,
+      username: uniqueId,
+      password: passwordHashed,
+      confirmation: passwordHashed,
+      role_id: 2
+    });
+
+    res.status(201).json({
+      message: 'User created, you can now login'
+    });
   },
 
   handleSignIn: async (req, res) => {
-    try {
-      const { email, password } = req.body;
+  
+    const { email, password } = req.body;
 
-      if (!email || !password) {
-        return res.status(400).json({
-          'error': 'Missing parameter(s).'
-        });
-      }
-
-      const userFound = await User.findOne({
-        where: { email }
+    if (!email || !password) {
+      return res.status(400).json({
+        'error': 'Missing parameter(s).'
       });
+    }
 
-      if (!userFound) {
+    const userFound = await User.findOne({
+      where: { email }
+    });
+
+    if (!userFound) {
+      return res.status(400).json({
+        'error': 'This user doesn\'t exist.'
+      });
+    }
+
+    const verificationBcrypt = (errBycrypt, resBycrypt) => {
+      if (resBycrypt) {
+        return res.status(200).json({
+          'userId': userFound.id,
+          'token': jwt.generateTokenForUser(userFound)
+        });
+      } else {
         return res.status(400).json({
-          'error': 'This user doesn\'t exist.'
+          'error': 'Please verify provided parameters.'
         });
       }
+    };
 
-      const verificationBcrypt = (errBycrypt, resBycrypt) => {
-        if (resBycrypt) {
-          return res.status(200).json({
-            'userId': userFound.id,
-            'token': jwt.generateTokenForUser(userFound)
-          });
-        } else {
-          return res.status(400).json({
-            'error': 'Please verify provided parameters.'
-          });
-        }
-      };
-
-      bcrypt.compare(password, userFound.password, verificationBcrypt);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  }
+    bcrypt.compare(password, userFound.password, verificationBcrypt);
+  },
 };
 
 module.exports = controller;
