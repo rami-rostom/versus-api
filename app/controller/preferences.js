@@ -2,7 +2,6 @@ const { User } = require('../models/index');
 
 const controller = {
   updateUserPreferedPlatform: async (req, res) => {
-   
     const { id } = req.params;
     const { platform_id } = req.body;
 
@@ -30,7 +29,6 @@ const controller = {
   },
 
   updateUserPreferedGame: async (req, res) => {
-  
     const { id } = req.params;
     const { game_id } = req.body;
 
@@ -58,7 +56,6 @@ const controller = {
   },
 
   updateUserPreferedEvent: async (req, res) => {
- 
     const { id } = req.params;
     const { event_id } = req.body;
 
@@ -81,7 +78,7 @@ const controller = {
       await user.removeLikeEvents(event_id);
       res.json({ message: 'Event is now unfollow.' });
     }
-  },
+  }
 };
 
 module.exports = controller;

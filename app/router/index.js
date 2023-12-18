@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const verifyToken = require('../middlewares/authMiddleware');
+const tryCatch = require('../middlewares/tryCatchMiddleware');
 
 const { homeController } = require('../controller');
 const { eventController } = require('../controller');
@@ -12,7 +13,7 @@ const { searchController } = require('../controller');
 const { gameController } = require('../controller');
 const { typeEventController } = require('../controller');
 const { platformController } = require('../controller');
-const tryCatch = require('../middlewares/tryCatch');
+
 // HOME
 router.get('/', homeController.renderHomePage);
 

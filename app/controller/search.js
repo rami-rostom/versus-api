@@ -5,7 +5,6 @@ const { Op } = require('sequelize');
 
 const controller = {
   searchEvent: async (req, res) => {
-  
     const eventTitle = req.query.q;
 
     if (!eventTitle) {
@@ -24,7 +23,6 @@ const controller = {
   },
 
   searchUser: async (req, res) => {
-  
     const username = req.query.q;
 
     if (!username) {
@@ -43,7 +41,6 @@ const controller = {
   },
 
   searchTeam: async (req, res) => {
-   
     const teamName = req.query.q;
 
     if (!teamName) {
@@ -62,7 +59,6 @@ const controller = {
   },
 
   searchAll: async (req, res) => {
-  
     const query = req.query.q;
 
     if (!query) {
@@ -112,7 +108,7 @@ const controller = {
         resultQuery.users.length === 0 && 
         resultQuery.teams.length === 0
     ) {
-      return res.status(204);
+      return res.status(204).json(resultQuery);
     }
 
     res.status(200).json(resultQuery);

@@ -3,7 +3,6 @@ const { Event } = require('../models/index');
 
 const controller = {
   getAllEvent: async (_, res) => {
-   
     const events = await Event.findAll({
       include: ['game', 'organizer', 'type_event', 'platform']
     });
@@ -12,7 +11,6 @@ const controller = {
   },
 
   getAllPublishedEvent: async (_, res) => {
-   
     const events = await Event.findAll({
       where: { status: 'published' },
       include: ['game', 'organizer', 'type_event', 'platform']
@@ -22,7 +20,6 @@ const controller = {
   },
 
   getOneEvent: async (req, res) => {
-    
     const { idOrSlug } = req.params;
     const isId = !isNaN(idOrSlug);
 
@@ -49,7 +46,6 @@ const controller = {
   },
 
   createOneEvent: async (req, res) => {
-    
     const { title, start_date, end_date, user_id } = req.body;
 
     if (!title || !start_date || !end_date || !user_id) {
@@ -82,7 +78,6 @@ const controller = {
   },
 
   updateOneEvent: async (req, res) => {
-  
     const { id } = req.params;
     const event = await Event.findByPk(id);
 
@@ -135,7 +130,6 @@ const controller = {
   },
 
   addParticipantToEvent: async (req, res) => {
- 
     const { id } = req.params;
     const { user_id } = req.body;
 
@@ -153,7 +147,6 @@ const controller = {
   },
 
   removeParticipantFromEvent: async (req, res) => {
-    
     const { id } = req.params;
     const { user_id } = req.body;
 
@@ -171,7 +164,6 @@ const controller = {
   },
 
   deleteOneEvent: async (req, res) => {
-   
     const { id } = req.params;
     const event = await Event.findByPk(id);
 

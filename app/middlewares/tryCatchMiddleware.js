@@ -4,9 +4,10 @@ function tryCatch(controller) {
       await controller(req, res, next);
     } 
     catch(error){
-      next(error);
+      console.log(error);
+      res.status(500).json(error.toString());
     }
   };
 }
 
-module.exports =  tryCatch;
+module.exports = tryCatch;
