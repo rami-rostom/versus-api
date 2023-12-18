@@ -2,15 +2,11 @@ const { TypeEvent } = require('../models/index');
 
 const controller = {
   getAllTypesEvent: async (_, res) => {
-    try {
-      const types = await TypeEvent.findAll();
+   
+    const types = await TypeEvent.findAll();
 
-      res.status(200).json(types);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json(error.toString());
-    }
-  }
+    res.status(200).json(types);
+  },
 };
 
 module.exports =  controller;
