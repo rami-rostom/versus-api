@@ -8,4 +8,4 @@ GET http://localhost:3000/search/user?q=ram
 GET http://localhost:3000/search/team?q=ver
 
 ### Search all
-GET http://localhost:3000/search/all?q=le
+GET http://localhost:3000/search/all?q=x

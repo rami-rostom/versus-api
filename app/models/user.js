@@ -8,6 +8,10 @@ User.init({
     type: DataTypes.TEXT,
     allowNull: false
   },
+  username_slug: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
   email: {
     type: DataTypes.TEXT,
     allowNull: false

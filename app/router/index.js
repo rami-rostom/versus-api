@@ -18,6 +18,7 @@ router.get('/', homeController.renderHomePage);
 
 // EVENT
 router.get('/events', eventController.getAllEvent);
+router.get('/events/published', eventController.getAllPublishedEvent);
 router.post('/event', verifyToken, eventController.createOneEvent);
 router.get('/event/:idOrSlug', eventController.getOneEvent);
 router.patch('/event/:id', verifyToken, eventController.updateOneEvent);
@@ -27,7 +28,7 @@ router.patch('/event/:id/unregister', verifyToken, eventController.removePartici
 
 // USER
 router.get('/users', userController.getAllUsers);
-router.get('/user/:id', userController.getOneUser);
+router.get('/user/:idOrSlug', userController.getOneUser);
 router.patch('/user/:id', verifyToken, userController.updateOneUser);
 router.get('/user/:id/events', userController.getUserEvents);
 router.get('/user/:id/teams', userController.getUserTeams);
