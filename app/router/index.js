@@ -59,7 +59,7 @@ router.get('/search/team', tryCatch(searchController.searchTeam));
 router.get('/search/all', tryCatch(searchController.searchAll));
 
 // GAME
-router.get('/games', gameController.getAllGames);
+router.get('/games', tryCatch(gameController.getAllGames));
 
 // TYPE EVENT
 router.get('/types', typeEventController.getAllTypesEvent);
