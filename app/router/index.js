@@ -41,12 +41,12 @@ router.patch('/user/:id/preferences/games', verifyToken, tryCatch(preferencesCon
 router.patch('/user/:id/preferences/events', verifyToken, tryCatch(preferencesController.updateUserPreferedEvent));
 
 // TEAM
-router.get('/teams', teamController.getAllTeams);
-router.post('/team', verifyToken, teamController.createOneTeam);
-router.get('/team/:id', teamController.getOneTeam);
-router.patch('/team/:id', verifyToken, teamController.updateOneTeam);
-router.delete('/team/:id', verifyToken, teamController.deleteOneTeam);
-router.patch('/team/:id/user', verifyToken, teamController.updateTeamPlayers);
+router.get('/teams', tryCatch(teamController.getAllTeams));
+router.post('/team', verifyToken, tryCatch(teamController.createOneTeam));
+router.get('/team/:id', tryCatch(teamController.getOneTeam));
+router.patch('/team/:id', verifyToken, tryCatch(teamController.updateOneTeam));
+router.delete('/team/:id', verifyToken, tryCatch(teamController.deleteOneTeam));
+router.patch('/team/:id/user', verifyToken, tryCatch(teamController.updateTeamPlayers));
 
 // AUTHENTIFICATION
 router.post('/signup', authController.handleSignUp);
