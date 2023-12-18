@@ -12,19 +12,19 @@ const { searchController } = require('../controller');
 const { gameController } = require('../controller');
 const { typeEventController } = require('../controller');
 const { platformController } = require('../controller');
-
+const tryCatch = require('../middlewares/tryCatch');
 // HOME
 router.get('/', homeController.renderHomePage);
 
 // EVENT
-router.get('/events', eventController.getAllEvent);
-router.get('/events/published', eventController.getAllPublishedEvent);
-router.post('/event', verifyToken, eventController.createOneEvent);
-router.get('/event/:idOrSlug', eventController.getOneEvent);
-router.patch('/event/:id', verifyToken, eventController.updateOneEvent);
-router.delete('/event/:id', verifyToken, eventController.deleteOneEvent);
-router.patch('/event/:id/register', verifyToken, eventController.addParticipantToEvent);
-router.patch('/event/:id/unregister', verifyToken, eventController.removeParticipantFromEvent);
+router.get('/events', tryCatch(eventController.getAllEvent));
+router.get('/events/published', tryCatch(eventController.getAllPublishedEvent));
+router.post('/event', verifyToken, tryCatch(eventController.createOneEvent));
+router.get('/event/:idOrSlug', tryCatch(eventController.getOneEvent));
+router.patch('/event/:id', verifyToken, tryCatch(eventController.updateOneEvent));
+router.delete('/event/:id', verifyToken, tryCatch(eventController.deleteOneEvent));
+router.patch('/event/:id/register', verifyToken, tryCatch(eventController.addParticipantToEvent));
+router.patch('/event/:id/unregister', verifyToken, tryCatch(eventController.removeParticipantFromEvent));
 
 // USER
 router.get('/users', userController.getAllUsers);
