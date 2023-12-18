@@ -36,9 +36,9 @@ router.post('/user/:id/follow', verifyToken, tryCatch(userController.followUser)
 router.post('/user/:id/unfollow', verifyToken, tryCatch(userController.unfollowUser));
 
 // PREFERENCES
-router.patch('/user/:id/preferences/platforms', verifyToken, preferencesController.updateUserPreferedPlatform);
-router.patch('/user/:id/preferences/games', verifyToken, preferencesController.updateUserPreferedGame);
-router.patch('/user/:id/preferences/events', verifyToken, preferencesController.updateUserPreferedEvent);
+router.patch('/user/:id/preferences/platforms', verifyToken, tryCatch(preferencesController.updateUserPreferedPlatform));
+router.patch('/user/:id/preferences/games', verifyToken, tryCatch(preferencesController.updateUserPreferedGame));
+router.patch('/user/:id/preferences/events', verifyToken, tryCatch(preferencesController.updateUserPreferedEvent));
 
 // TEAM
 router.get('/teams', teamController.getAllTeams);
