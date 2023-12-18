@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-const jwt = require('../services/jwt');
+const jwt = require('../middlewares/jwtMiddleware');
 const { User } = require('../models/index');
 
 const controller = {
