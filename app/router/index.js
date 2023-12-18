@@ -49,8 +49,8 @@ router.delete('/team/:id', verifyToken, tryCatch(teamController.deleteOneTeam));
 router.patch('/team/:id/user', verifyToken, tryCatch(teamController.updateTeamPlayers));
 
 // AUTHENTIFICATION
-router.post('/signup', authController.handleSignUp);
-router.post('/login', authController.handleSignIn);
+router.post('/signup', tryCatch(authController.handleSignUp));
+router.post('/login', tryCatch(authController.handleSignIn));
 
 // SEARCH
 router.get('/search/event', searchController.searchEvent);
