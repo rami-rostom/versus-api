@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-const jwt = require('../middlewares/jwtMiddleware');
+const token = require('../middlewares/jwtMiddleware');
 const { User } = require('../models/index');
 
 const controller = {
@@ -87,7 +87,8 @@ const controller = {
       if (resBycrypt) {
         return res.status(200).json({
           'userId': userFound.id,
-          'token': jwt.generateTokenForUser(userFound)
+          'token': token.generateAccessToken(userFound),
+          'refreshToken': token.generateRefreshToken(userFound)
         });
       } else {
         return res.status(400).json({

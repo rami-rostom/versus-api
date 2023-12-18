@@ -13,7 +13,8 @@ GET http://localhost:3000/event/smash-bros-by-versus
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1
 content-type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ.eyJ1c2VySWQiOjgsImlhdCI6MTcwMjg5MDczMSwiZXhwIjoxNzAyOTc3MTMxfQ.a1KaVpCgLJ1xpLebG1I-nO60J1NgTW_dOT-9qbmroEI
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTcwMjkyNDUwMSwiZXhwIjoxNzAyOTI0NTIxfQ.IGhKDDtWZOJRonMSHJl010oNhCNT8SPwJzEQwzstE2c
+refreshtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTcwMjkyNDUwMSwiZXhwIjoxNzAyOTI1MTAxfQ.bnOd_s3G57_DMVB9oEu-Rytcaaasc9fZYXDp8EHa2v8
 
 {
     "title": "Smash Bros by VERSUS 6",
