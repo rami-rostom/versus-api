@@ -62,7 +62,7 @@ router.get('/search/all', tryCatch(searchController.searchAll));
 router.get('/games', tryCatch(gameController.getAllGames));
 
 // TYPE EVENT
-router.get('/types', typeEventController.getAllTypesEvent);
+router.get('/types', tryCatch(typeEventController.getAllTypesEvent));
 
 // PLATFORM
 router.get('/platforms', platformController.getAllPlatforms);
