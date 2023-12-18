@@ -53,10 +53,10 @@ router.post('/signup', tryCatch(authController.handleSignUp));
 router.post('/login', tryCatch(authController.handleSignIn));
 
 // SEARCH
-router.get('/search/event', searchController.searchEvent);
-router.get('/search/user', searchController.searchUser);
-router.get('/search/team', searchController.searchTeam);
-router.get('/search/all', searchController.searchAll);
+router.get('/search/event', tryCatch(searchController.searchEvent));
+router.get('/search/user', tryCatch(searchController.searchUser));
+router.get('/search/team', tryCatch(searchController.searchTeam));
+router.get('/search/all', tryCatch(searchController.searchAll));
 
 // GAME
 router.get('/games', gameController.getAllGames);
