@@ -4,7 +4,8 @@ const { Event } = require('../models/index');
 const controller = {
   getAllEvent: async (_, res) => {
     const events = await Event.findAll({
-      include: ['game', 'organizer', 'type_event', 'platform']
+      include: ['game', 'organizer', 'type_event', 'platform', 'participants'],
+      order: [['start_date', 'ASC']]
     });
 
     res

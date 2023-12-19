@@ -11,7 +11,7 @@ PATCH http://localhost:3000/user/1/preferences/games HTTP/1.1
 content-type: application/json
 
 {
-    "game_id": [1, 4]
+    "game_id": 1
 }
 
 ### Update user preferences of an event

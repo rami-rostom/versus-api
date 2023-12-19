@@ -2,7 +2,7 @@
 GET http://localhost:3000/users
 
 ### Render one user
-GET http://localhost:3000/user/ramirez
+GET http://localhost:3000/user/1
 
 ### Update one user
 PATCH http://localhost:3000/user/1 HTTP/1.1
