@@ -13,7 +13,8 @@ GET http://localhost:3000/event/smash-bros-by-versus
 ### Create an event
 POST http://localhost:3000/event HTTP/1.1
 content-type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ.eyJ1c2VySWQiOjgsImlhdCI6MTcwMjg5MDczMSwiZXhwIjoxNzAyOTc3MTMxfQ.a1KaVpCgLJ1xpLebG1I-nO60J1NgTW_dOT-9qbmroEI
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTcwMjk3OTM4OSwiZXhwIjoxNzAyOTc5NDA5fQ.P9DPANOeeGla7CAPBDy_vX2LveDUigvFoT12x3z8XAk
+refreshtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTcwMjk3OTM4OSwiZXhwIjoxNzA1NTcxMzg5fQ.Lr8CbHIL9lm38hbMj7_FUo2OT2VXP2qusty0J4ox7SU
 
 {
     "title": "Smash Bros by VERSUS 6",
@@ -37,7 +38,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTcw
 
 
 ### Register to an event
-PATCH http://localhost:3000/event/4/register HTTP/1.1
+PATCH http://localhost:3000/event/1/register HTTP/1.1
 content-type: application/json
 
 {
@@ -45,7 +46,7 @@ content-type: application/json
 }
 
 ### Unregister from an event
-PATCH http://localhost:3000/event/4/unregister HTTP/1.1
+PATCH http://localhost:3000/event/1/unregister HTTP/1.1
 content-type: application/json
 
 {

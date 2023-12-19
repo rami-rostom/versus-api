@@ -8,9 +8,9 @@ const Team = require('./team');
 const TypeEvent = require('./type_event');
 
 
-/*** ASSOCIATIONS SIMPLES ***/
+/*** SIMPLE ASSOCIATIONS ***/
 
-// Un utilisateur possède un rôle
+// An user has one role
 Role.hasMany(User, {
   as: 'users',
   foreignKey: 'role_id'
@@ -20,7 +20,7 @@ User.belongsTo(Role, {
   foreignKey: 'role_id' 
 });
 
-// Un social appartient à un utilisateur
+// A social belongs to an user
 User.hasMany(Social, {
   as: 'socials',
   foreignKey: 'user_id'
@@ -30,7 +30,7 @@ Social.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-// Un event a un type d'event
+// An event has an event type
 TypeEvent.hasMany(Event, {
   as: 'event_type',
   foreignKey: 'type_event_id'
@@ -40,7 +40,7 @@ Event.belongsTo(TypeEvent, {
   foreignKey: 'type_event_id'
 });
 
-// Un event est lié à un jeu
+// An event has a game
 Game.hasMany(Event, {
   as: 'event_game',
   foreignKey: 'game_id'
@@ -50,7 +50,7 @@ Event.belongsTo(Game, {
   foreignKey: 'game_id'
 });
 
-// Un event est lié à une platform
+// An event has a platform
 Platform.hasMany(Event, {
   as: 'event_platform',
   foreignKey: 'platform_id'
@@ -60,7 +60,7 @@ Event.belongsTo(Platform, {
   foreignKey: 'platform_id'
 });
 
-// Un event a un organisateur
+// An event has an organizer
 User.hasMany(Event, {
   as: 'organize',
   foreignKey: 'user_id'
@@ -71,9 +71,9 @@ Event.belongsTo(User, {
 });
 
 
-/*** JOINTURES ***/
+/*** ADVANCED ASSOCIATIONS ***/
 
-// Un utilisateur peut avoir plusieurs équipes et une équipe peut avoir plusieurs utilisateurs
+// An user can have several teams and a team can have several users
 User.belongsToMany(Team, {
   as: 'teams',
   through: 'user_has_team',
@@ -89,7 +89,7 @@ Team.belongsToMany(User, {
   updatedAt: false
 });
 
-// Un utilisateur peut suivre plusieurs équipes et une équipe peut être suivi par plusieurs utilisateurs
+// An user can follow several teams and a team can be followed by several users
 User.belongsToMany(Team, {
   as: 'like_teams',
   through: 'user_like_team',
@@ -105,7 +105,7 @@ Team.belongsToMany(User, {
   updatedAt: false
 });
 
-// Un utilisateur peut suivre plusieurs autres utilisateurs et un utilisateur peut être suivi par plusieurs utilisateurs
+// An user can follow several users and an user can be followed by several users
 User.belongsToMany(User, {
   as: 'followers',
   through: 'user_like_user',
@@ -121,7 +121,7 @@ User.belongsToMany(User, {
   updatedAt: false
 });
 
-// Un utilisateur peut préférer plusieurs plateformes et une plateforme peut être aimé par plusieurs utilisateurs
+// An user can like several platforms and a platform can be liked by several users
 User.belongsToMany(Platform, {
   as: 'platforms',
   through: 'user_like_platform',
@@ -137,7 +137,7 @@ Platform.belongsToMany(User, {
   updatedAt: false
 });
 
-// Un utilisateur peut aimer plusieurs jeux et un jeu peut être aimé par plusieurs utilisateurs
+// An user can like several games and a game can be liked by several users
 User.belongsToMany(Game, {
   as: 'games',
   through: 'user_like_game',
@@ -153,7 +153,7 @@ Game.belongsToMany(User, {
   updatedAt: false
 });
 
-// Un jeu peut avoir plusieurs plateformes et une plateforme peut avoir plusieurs jeux
+// A game can belongs to several platforms and a platform can have several games
 Game.belongsToMany(Platform, {
   as: 'platforms',
   through: 'game_has_platform',
@@ -169,7 +169,7 @@ Platform.belongsToMany(Game, {
   updatedAt: false
 });
 
-// Un event peut avoir plusieurs utilisateurs et un utilisateur peut participer à plusieurs events
+// An event can have several participants and an user can participate to several events
 Event.belongsToMany(User, {
   as: 'participants',
   through: 'event_has_user',
@@ -185,7 +185,7 @@ User.belongsToMany(Event, {
   updatedAt: false
 });
 
-// Un event peut avoir plusieurs équipes et une équipe peut participer à plusieurs events
+// An event can have several teams and an team can participate to several events
 Event.belongsToMany(Team, {
   as: 'teams',
   through: 'event_has_team',
@@ -201,7 +201,7 @@ Team.belongsToMany(Event, {
   updatedAt: false
 });
 
-// Un utilisateur peut suivre plusieurs events et un event peut être suivi par plusieurs utilisateurs
+// An user can follow several events and an event can be followed by several users
 User.belongsToMany(Event, {
   as: 'likeEvents',
   through: 'user_like_event',

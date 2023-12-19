@@ -1,18 +1,21 @@
 const express = require('express');
 const router = express.Router();
+
 const verifyToken = require('../middlewares/authMiddleware');
 const tryCatch = require('../middlewares/tryCatchMiddleware');
 
-const { homeController } = require('../controller');
-const { eventController } = require('../controller');
-const { userController } = require('../controller');
-const { preferencesController } = require('../controller');
-const { authController } = require('../controller');
-const { teamController } = require('../controller');
-const { searchController } = require('../controller');
-const { gameController } = require('../controller');
-const { typeEventController } = require('../controller');
-const { platformController } = require('../controller');
+const { 
+  homeController, 
+  eventController, 
+  userController, 
+  preferencesController, 
+  authController, 
+  teamController, 
+  searchController, 
+  gameController, 
+  typeEventController, 
+  platformController 
+} = require('../controller');
 
 // HOME
 router.get('/', homeController.renderHomePage);

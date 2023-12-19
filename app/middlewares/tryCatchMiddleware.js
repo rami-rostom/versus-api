@@ -5,7 +5,9 @@ const tryCatch = (controller) => {
     } 
     catch (error) {
       console.log(error);
-      res.status(500).json(error.toString());
+      res
+        .status(500)
+        .json(error.toString());
     }
   };
 };
