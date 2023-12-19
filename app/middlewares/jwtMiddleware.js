@@ -7,7 +7,7 @@ const token = {
     },
     process.env.ACCESS_JWT_SECRET,
     {
-      expiresIn: '30m'
+      expiresIn: '24h'
     });
   },
 

@@ -55,6 +55,7 @@ router.patch('/team/:id/user', verifyToken, tryCatch(teamController.updateTeamPl
 // AUTHENTIFICATION
 router.post('/signup', tryCatch(authController.handleSignUp));
 router.post('/login', tryCatch(authController.handleSignIn));
+router.patch('/user/:id/edit/password', tryCatch(authController.handleNewPassword));
 
 // SEARCH
 router.get('/search/event', tryCatch(searchController.searchEvent));
