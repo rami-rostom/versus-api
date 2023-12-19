@@ -132,10 +132,10 @@ const controller = {
     const user = await User.findByPk(id);
 
     // Comparaison between the current password and the new password
-    const currentPassword = await bcrypt.compare(password, user.password);
+    const checkNewAndCurrentPassword = await bcrypt.compare(password, user.password);
 
-    // If the result is true, user hase to change the new password
-    if (currentPassword) {
+    // If the result is true, it means that the new password is the same than the current one. So the user has to change the new password
+    if (checkNewAndCurrentPassword) {
       return res
         .status(400)
         .json({ 'error': 'You can\'t use the same password as new password. Please provide a different one.' });
