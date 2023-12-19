@@ -1,3 +1,4 @@
+const slugify = require('slugify');
 const { User } = require('../models/index');
 
 const controller = {
@@ -72,10 +73,29 @@ const controller = {
         .json({ 'error': 'User not found. Please verify the provided id.' });
     }
 
-    const { username, avatar } = req.body;
+    const { avatar, username } = req.body;
 
-    if (username) { user.username = username; }
     if (avatar) { user.avatar = avatar; }
+
+    if (username) {
+      // Verification for unique username
+      const usernameCheck = await User.findOne({
+        where: { username }
+      });
+
+      if (usernameCheck) {
+        return res
+          .status(400)
+          .json({ 'error': 'Username already used. Please pick a different one.' });
+      }
+
+      // If usernameCheck is false, username can be updated
+      user.username = username;
+
+      // If the username is updated, the username_slug is automatically updated
+      const usernameSlugified = slugify(username, { lower: true });
+      user.username_slug = usernameSlugified;
+    }
 
     await user.save();
 

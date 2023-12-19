@@ -37,6 +37,7 @@ const controller = {
         .json({ 'error': 'Password invalid (must be at least 8 characters, include one number, one capital letter and one special character).' });
     }
 
+    // Verification for unique email
     const emailCheck = await User.findOne({
       where: { email }
     });

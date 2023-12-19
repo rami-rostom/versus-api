@@ -7,9 +7,11 @@ GET http://localhost:3000/user/1
 ### Update one user
 PATCH http://localhost:3000/user/1 HTTP/1.1
 content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcwMzAxODY5NCwiZXhwIjoxNzAzMTA1MDk0fQ.huCNoJaOM965efoUyXjFPp_PeuS5Q0tk90CWptzUGP4
+refreshtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcwMzAxODY5NCwiZXhwIjoxNzA1NjEwNjk0fQ.l3gjMhBJkgj6RgY-Q3Eoxuypyxbunx7pJ9K7AX34R34
 
 {
-    "username": "rami"
+    "username": "ramirez"
 }
 
 ### Get events of an user
