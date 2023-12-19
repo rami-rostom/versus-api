@@ -1,4 +1,4 @@
-const { User } = require('../models/index');
+const { User, Game, Event } = require('../models/index');
 
 const controller = {
   getAllUsers: async (_, res) => {
@@ -172,6 +172,23 @@ const controller = {
     res
       .status(200)
       .json({ 'message': 'User unfollowed successfully.' });
+  },
+
+  getEventsOfUserGames: async (req, res) => {
+    const { id } = req.params;
+
+    const user = await User.findByPk(id, {
+      include: [
+        {
+          association: 'games',
+          include: [{ association: 'event_game' }]
+        }
+      ]
+    });
+
+    res
+      .status(200)
+      .json(user);
   }
 };
 
