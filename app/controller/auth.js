@@ -86,8 +86,8 @@ const controller = {
     }
 
     // Function is launch if the password match with the decrypted password. It will also generate JWT tokens.
-    const verificationAuthBcrypt = (response) => {
-      if (response) {
+    const verificationAuthBcrypt = (errBycrypt, resBycrypt) => {
+      if (resBycrypt) {
         return res
           .status(200)
           .json({
