@@ -4,16 +4,20 @@ const controller = {
   getAllUsers: async (_, res) => {
     const users = await User.findAll();
 
-    res.status(200).json(users);
+    res
+      .status(200)
+      .json(users);
   },
 
   getOneUser: async (req, res) => {
+    // An user can be requested with his ID or his slug
     const { idOrSlug } = req.params;
     const isId = !isNaN(idOrSlug);
 
     let user;
 
     if (isId) {
+      // Case where the param is an ID
       user = await User.findByPk(idOrSlug, {
         include: [
           'role',
@@ -29,6 +33,7 @@ const controller = {
         ]
       });
     } else {
+      // Case where the param is a slug
       user = await User.findOne({
         where: { username_slug: idOrSlug },
         include: [
@@ -47,11 +52,13 @@ const controller = {
     }
 
     if (user) {
-      res.status(200).json(user);
+      res
+        .status(200)
+        .json(user);
     } else {
-      res.status(404).json({
-        'error': 'User not found. Please verify the provided id.'
-      });
+      res
+        .status(404)
+        .json({ 'error': 'User not found. Please verify the provided id.' });
     }
   },
 
@@ -60,9 +67,9 @@ const controller = {
     const user = await User.findByPk(id);
 
     if (!user) {
-      return res.status(404).json({
-        'error': 'User not found. Please verify the provided id.'
-      });
+      return res
+        .status(404)
+        .json({ 'error': 'User not found. Please verify the provided id.' });
     }
 
     const { username, avatar } = req.body;
@@ -72,7 +79,9 @@ const controller = {
 
     await user.save();
 
-    res.status(200).json(user);
+    res
+      .status(200)
+      .json(user);
   },
 
   getUserEvents: async (req, res) => {
@@ -80,14 +89,17 @@ const controller = {
     const user = await User.findByPk(id);
 
     if (!user) {
-      return res.status(404).json({
-        'error': 'User not found. Please verify the provided id.'
-      });
+      return res
+        .status(404)
+        .json({ 'error': 'User not found. Please verify the provided id.' });
     }
 
+    // Use Sequelize method to get all events in which the user is participating
     const userEvents = await user.getEvents();
 
-    res.status(200).json(userEvents);
+    res
+      .status(200)
+      .json(userEvents);
   },
 
   getUserTeams: async (req, res) => {
@@ -95,14 +107,17 @@ const controller = {
     const user = await User.findByPk(id);
 
     if (!user) {
-      return res.status(404).json({
-        'error': 'User not found. Please verify the provided id.'
-      });
+      return res
+        .status(404)
+        .json({ 'error': 'User not found. Please verify the provided id.' });
     }
 
+    // Use Sequelize method to get all teams in which the user is member
     const userTeams = await user.getTeams();
 
-    res.status(200).json(userTeams);
+    res
+      .status(200)
+      .json(userTeams);
   },
 
   followUser: async (req, res) => {
@@ -116,16 +131,21 @@ const controller = {
     const userToFollow = await User.findByPk(id);
 
     if (!userToFollow) {
-      return res.status(404).json({
-        'error': 'User not found. Please verify the provided id.'
-      });
+      return res
+        .status(404)
+        .json({
+          'error': 'User not found. Please verify the provided id.'
+        });
     }
 
+    // Use Sequelize method to add a new entry in "user_like_user" table
     await userToFollow.addFollowing(userFollower, {
       through: { user_liked_id: user_id }
     });
 
-    res.status(200).json({ message: 'User followed successfully.' });
+    res
+      .status(200)
+      .json({ 'message': 'User followed successfully.' });
   },
 
   unfollowUser: async (req, res) => {
@@ -139,16 +159,19 @@ const controller = {
     const userToUnfollow = await User.findByPk(id);
 
     if (!userToUnfollow) {
-      return res.status(404).json({
-        'error': 'User not found. Please verify the provided id.'
-      });
+      return res
+        .status(404)
+        .json({ 'error': 'User not found. Please verify the provided id.' });
     }
 
+    // Use Sequelize method to remove an entry from "user_like_user" table
     await userToUnfollow.removeFollowing(userFollower, {
       through: { user_liked_id: user_id }
     });
 
-    res.status(200).json({ message: 'User unfollowed successfully.' });
+    res
+      .status(200)
+      .json({ 'message': 'User unfollowed successfully.' });
   }
 };
 

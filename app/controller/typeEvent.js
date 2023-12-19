@@ -4,7 +4,9 @@ const controller = {
   getAllTypesEvent: async (_, res) => {
     const types = await TypeEvent.findAll();
 
-    res.status(200).json(types);
+    res
+      .status(200)
+      .json(types);
   }
 };
 
