@@ -172,6 +172,34 @@ const controller = {
     res
       .status(200)
       .json({ 'message': 'User unfollowed successfully.' });
+  },
+
+  getEventsOfUserGames: async (req, res) => {
+    const { id } = req.params;
+
+    const user = await User.findByPk(id, {
+      include: [
+        {
+          association: 'games',
+          include: [{ association: 'event_game' }]
+        }
+      ]
+    });
+
+    // Extract user favorites games
+    const userGames = user.games;
+
+    // Map through each user game to get all associated events and convert the result to JSON by using map method again
+    const eventsArrays = userGames.map((userGame) => {
+      return userGame.event_game.map((event) => event.toJSON());
+    });
+
+    // Convert the multiple arrays in only one array with the flat method
+    const eventsArray = eventsArrays.flat();
+
+    res
+      .status(200)
+      .json(eventsArray);
   }
 };
 

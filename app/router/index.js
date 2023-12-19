@@ -36,6 +36,7 @@ router.get('/user/:idOrSlug', tryCatch(userController.getOneUser));
 router.patch('/user/:id', verifyToken, tryCatch(userController.updateOneUser));
 router.get('/user/:id/events', tryCatch(userController.getUserEvents));
 router.get('/user/:id/teams', tryCatch(userController.getUserTeams));
+router.get('/user/:id/games/events', tryCatch(userController.getEventsOfUserGames));
 router.post('/user/:id/follow', verifyToken, tryCatch(userController.followUser));
 router.post('/user/:id/unfollow', verifyToken, tryCatch(userController.unfollowUser));
 

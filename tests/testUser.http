@@ -18,6 +18,9 @@ GET http://localhost:3000/user/1/events
 ### Get teams of an user
 GET http://localhost:3000/user/1/teams
 
+### Get events of prefered games
+GET http://localhost:3000/user/1/games/events
+
 ### Follow an user
 POST http://localhost:3000/user/2/follow HTTP/1.1
 content-type: application/json
