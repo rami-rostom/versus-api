@@ -1,4 +1,4 @@
-const { User, Game, Event } = require('../models/index');
+const { User } = require('../models/index');
 
 const controller = {
   getAllUsers: async (_, res) => {
@@ -186,9 +186,20 @@ const controller = {
       ]
     });
 
+    // Extract user favorites games
+    const userGames = user.games;
+
+    // Map through each user game to get all associated events and convert the result to JSON by using map method again
+    const eventsArrays = userGames.map((userGame) => {
+      return userGame.event_game.map((event) => event.toJSON());
+    });
+
+    // Convert the multiple arrays in only one array with the flat method
+    const eventsArray = eventsArrays.flat();
+
     res
       .status(200)
-      .json(user);
+      .json(eventsArray);
   }
 };
 
