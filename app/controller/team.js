@@ -32,6 +32,18 @@ const controller = {
       });
     }
 
+    // Verification for unique name event
+    const nameCheck = await Team.findOne({
+      where: { name }
+    });
+
+    if (nameCheck) {
+      return res
+        .status(400)
+        .json({ 'error': 'Name already used. Please try with a different one.' });
+    }
+
+    // If nameCheck is false, the team can be created
     const newTeam = await Team.create({ name });
 
     res
@@ -50,7 +62,23 @@ const controller = {
     }
 
     const { name } = req.body;
-    if (name) { team.name = name; }
+
+    if (name) {
+      // Verification for unique name event
+      const nameCheck = await Team.findOne({
+        where: { name }
+      });
+
+      if (nameCheck) {
+        return res
+          .status(400)
+          .json({ 'error': 'Name already used. Please try with a different one.' });
+      }
+
+      // If nameCheck is false, the name is modified
+      team.name = name;
+    }
+
     await team.save();
 
     res
