@@ -13,6 +13,15 @@ POST http://localhost:3000/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "ramirez@gmail.com",
-  "password": "Ramirez1!"
+  "email": "rami@hotmail.com",
+  "password": "Passwooooord1!"
+}
+
+### Change password
+PATCH http://localhost:3000/user/1/edit/password HTTP/1.1
+content-type: application/json
+
+{
+  "password": "Passwoooord1!",
+  "confirmation": "Passwoooord1!"
 }

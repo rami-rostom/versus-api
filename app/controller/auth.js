@@ -11,7 +11,6 @@ const controller = {
     // Password require at least 8 characters, 1 capital letter and 1 number.
     const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm;
 
-   
     const { email, password, confirmation } = req.body;
 
     if (!email || !password) {
@@ -103,6 +102,53 @@ const controller = {
     };
 
     bcrypt.compare(password, userFound.password, verificationAuthBcrypt);
+  },
+
+  handleNewPassword: async (req, res) => {
+    // Password require at least 8 characters, 1 capital letter and 1 number.
+    const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/gm;
+    
+    const { id } = req.params;
+    const { password, confirmation } = req.body;
+
+    if (!password || !confirmation) {
+      return res
+        .status(400)
+        .json({ 'error': 'Missing parameter(s).' });
+    } 
+
+    if (password !== confirmation) {
+      return res
+        .status(400)
+        .json({ 'error': 'Password and confirmation isn\'t matching.' });
+    }
+
+    if (!PASSWORD_REGEX.test(password)) {
+      return res
+        .status(400)
+        .json({ 'error': 'Password invalid (must be at least 8 characters, include one number, one capital letter and one special character).' });
+    }
+
+    const user = await User.findByPk(id);
+
+    // Comparaison between the current password and the new password
+    const checkNewAndCurrentPassword = await bcrypt.compare(password, user.password);
+
+    // If the result is true, it means that the new password is the same than the current one. So the user has to change the new password
+    if (checkNewAndCurrentPassword) {
+      return res
+        .status(400)
+        .json({ 'error': 'You can\'t use the same password as new password. Please provide a different one.' });
+    }
+
+    const passwordHashed = await bcrypt.hash(password, 10);
+
+    if (password) { user.password = passwordHashed; }
+    await user.save();
+
+    res
+      .status(200)
+      .json({ 'message': 'Password successfully modified.' });
   }
 };
 
