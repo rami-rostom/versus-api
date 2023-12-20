@@ -208,7 +208,10 @@ const controller = {
       include: [
         {
           association: 'games',
-          include: [{ association: 'event_game' }]
+          include: [{
+            association: 'event_game',
+            include: ['game', 'platform']
+          }]
         }
       ]
     });
