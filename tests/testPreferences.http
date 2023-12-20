@@ -1,0 +1,23 @@
+### Update platform preferences of an user
+PATCH http://localhost:3000/user/1/preferences/platforms HTTP/1.1
+content-type: application/json
+
+{
+    "platform_id": [5, 1]
+}
+
+### Update game preferences of an user
+PATCH http://localhost:3000/user/1/preferences/games HTTP/1.1
+content-type: application/json
+
+{
+    "game_id": [3, 4, 5]
+}
+
+### Update user preferences of an event
+PATCH http://localhost:3000/user/1/preferences/events HTTP/1.1
+content-type: application/json
+
+{
+    "event_id": 2
+}

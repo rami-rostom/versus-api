@@ -1,0 +1,2 @@
+### Render all platforms
+GET http://localhost:3000/platforms

@@ -1,0 +1,29 @@
+### Signup
+POST http://localhost:3000/signup HTTP/1.1
+content-type: application/json
+
+{
+  "email": "ramirez@gmail.com",
+  "password": "Ramirez1!",
+  "confirmation": "Ramirez1!"
+}
+
+### Signin
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "rami@hotmail.com",
+  "password": "Passwooooord1!"
+}
+
+### Change password
+PATCH http://localhost:3000/user/1/edit/password HTTP/1.1
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcwMzAxODY5NCwiZXhwIjoxNzAzMTA1MDk0fQ.huCNoJaOM965efoUyXjFPp_PeuS5Q0tk90CWptzUGP4
+refreshtoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcwMzAxODY5NCwiZXhwIjoxNzA1NjEwNjk0fQ.l3gjMhBJkgj6RgY-Q3Eoxuypyxbunx7pJ9K7AX34R34
+
+{
+  "password": "Passwooooord1!",
+  "confirmation": "Passwooooord1!"
+}

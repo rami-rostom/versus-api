@@ -1,0 +1,11 @@
+### Search an event
+GET http://localhost:3000/search/event?q=track
+
+### Search an user
+GET http://localhost:3000/search/user?q=ram
+
+### Search a team
+GET http://localhost:3000/search/team?q=ver
+
+### Search all
+GET http://localhost:3000/search/all?q=w
