@@ -134,10 +134,23 @@ const controller = {
     if (game_id) { event.game_id = game_id; }
     if (platform_id) { event.platform_id = platform_id; }
     if (user_id) { event.user_id = user_id; }
-    if (title) { event.title = title; }
 
-    // If the title is updated, the title_slug is automatically updated
     if (title) {
+      // Verification for unique title event
+      const titleCheck = await Event.findOne({
+        where: { title }
+      });
+
+      if (titleCheck) {
+        return res
+          .status(400)
+          .json({ 'error': 'Title already used. Please try with a different one.' });
+      }
+
+      // If titleCheck is false, the title can be modified
+      event.title = title;
+
+      // If the title is updated, the title_slug is automatically updated
       const titleSlugified = slugify(title, { lower: true });
       event.title_slug = titleSlugified;
     }
