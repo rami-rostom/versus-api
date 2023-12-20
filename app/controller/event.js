@@ -16,7 +16,7 @@ const controller = {
   getAllPublishedEvent: async (_, res) => {
     const events = await Event.findAll({
       where: { status: 'published' },
-      include: ['game', 'organizer', 'type_event', 'platform']
+      include: ['game', 'organizer', 'type_event', 'platform', 'participants']
     });
 
     res
