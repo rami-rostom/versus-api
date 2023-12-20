@@ -82,9 +82,10 @@ const controller = {
 
     // Request to search events and push the result in the array
     const eventsQuery = await Event.findAll({
-      where: { title: {
-        [Op.iLike]: `%${query}%`
-      }}
+      where: {
+        title: { [Op.iLike]: `%${query}%`},
+        status: 'published'
+      }
     });
 
     eventsQuery.forEach(event => {
@@ -93,9 +94,9 @@ const controller = {
 
     // Request to search users and push the result in the array
     const usersQuery = await User.findAll({
-      where: { username: {
-        [Op.iLike]: `%${query}%`
-      }}
+      where: {
+        username: { [Op.iLike]: `%${query}%` }
+      }
     });
 
     usersQuery.forEach(user => {
@@ -104,9 +105,9 @@ const controller = {
 
     // Request to search teams and push the result in the array
     const teamsQuery = await Team.findAll({
-      where: { name: {
-        [Op.iLike]: `%${query}%`
-      }}
+      where: {
+        name: { [Op.iLike]: `%${query}%` }
+      }
     });
 
     teamsQuery.forEach(team => {
