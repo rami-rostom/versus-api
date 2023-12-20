@@ -136,18 +136,18 @@ const controller = {
     if (user_id) { event.user_id = user_id; }
 
     if (title) {
-      // Verification for unique title event
-      const titleCheck = await Event.findOne({
-        where: { title }
-      });
+      // // Verification for unique title event
+      // const titleCheck = await Event.findOne({
+      //   where: { title }
+      // });
 
-      if (titleCheck) {
-        return res
-          .status(400)
-          .json({ 'error': 'Title already used. Please try with a different one.' });
-      }
+      // if (titleCheck) {
+      //   return res
+      //     .status(400)
+      //     .json({ 'error': 'Title already used. Please try with a different one.' });
+      // }
 
-      // If titleCheck is false, the title can be modified
+      // // If titleCheck is false, the title can be modified
       event.title = title;
 
       // If the title is updated, the title_slug is automatically updated
