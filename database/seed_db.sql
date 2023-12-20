@@ -1,5 +1,7 @@
 BEGIN;
 
+SET NAMES 'utf8';
+
 INSERT INTO "role"("name") VALUES
 ('admin'),
 ('member');
