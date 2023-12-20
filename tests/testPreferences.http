@@ -3,7 +3,7 @@ PATCH http://localhost:3000/user/1/preferences/platforms HTTP/1.1
 content-type: application/json
 
 {
-    "platform_id": [2]
+    "platform_id": [5, 1]
 }
 
 ### Update game preferences of an user
