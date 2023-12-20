@@ -21,9 +21,12 @@ const controller = {
       // Case where the param is an ID
       user = await User.findByPk(idOrSlug, {
         include: [
+          {
+            association: 'events',
+            include: [{ association: 'platform' }]
+          },
           'role',
           'socials',
-          'events',
           'organize',
           'teams',
           'platforms',
@@ -31,16 +34,20 @@ const controller = {
           'followers',
           'like_teams',
           'likeEvents'
-        ]
+        ],
+        
       });
     } else {
       // Case where the param is a slug
       user = await User.findOne({
         where: { username_slug: idOrSlug },
         include: [
+          {
+            association: 'events',
+            include: [{ association: 'platform' }]
+          },
           'role',
           'socials',
-          'events',
           'organize',
           'teams',
           'platforms',
