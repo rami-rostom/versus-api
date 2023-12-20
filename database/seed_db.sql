@@ -25,14 +25,14 @@ INSERT INTO "team"("name") VALUES
 
 INSERT INTO "platform"("name") VALUES
 ('PC'),
-('Playstation 5'),
-('Playstation 4'),
+('PS5'),
+('PS4'),
 ('Xbox Series'),
 ('Xbox One'),
 ('Nintendo Switch'),
 ('Mobile'),
 ('Rétro'),
-('Crossplatform');
+('Cross platform');
 
 INSERT INTO "game"("name", "thumbnail") VALUES
 ('Trackmania', 'https://static-cdn.jtvnw.net/ttv-boxart/687129551_IGDB-285x380.jpg'),
