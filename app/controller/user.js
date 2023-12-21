@@ -25,9 +25,12 @@ const controller = {
             association: 'events',
             include: [{ association: 'platform' }]
           },
+          {
+            association: 'organize',
+            include: [{ association: 'platform' }]
+          },
           'role',
           'socials',
-          'organize',
           'teams',
           'platforms',
           'games',
@@ -46,9 +49,16 @@ const controller = {
             association: 'events',
             include: [{ association: 'platform' }]
           },
+          {
+            association: 'organize',
+            include: [{ association: 'platform' }]
+          },
+          {
+            association: 'organize',
+            include: [{ association: 'game' }]
+          },
           'role',
           'socials',
-          'organize',
           'teams',
           'platforms',
           'games',
