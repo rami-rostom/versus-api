@@ -87,8 +87,8 @@ Reset the database
 
 ## :coffee: Authors
 
-- [@Sasha-Polgar](https://github.com/Sasha-Polgar)
-- [@mMormin](https://github.com/mMormin)
-- [@KimberleyBonix](https://github.com/KimberleyBonix)
-- [@rami-rostom](https://github.com/rami-rostom)
-- [@WilliamViranin](https://github.com/WilliamViranin)
+- [@rami-rostom](https://github.com/rami-rostom) (lead developer back)
+- [@WilliamViranin](https://github.com/WilliamViranin) (developer back)
+- [@Sasha-Polgar](https://github.com/Sasha-Polgar) (developer front)
+- [@mMormin](https://github.com/mMormin) (developer front)
+- [@KimberleyBonix](https://github.com/KimberleyBonix) (developer front)
